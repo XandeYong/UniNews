@@ -19,7 +19,7 @@
 
                             <div id="nav-title" class="col-12 col-sm-5 col-md-6">
                                 <h3 class="d-flex">
-                                    <span>Uni</span>
+                                    <span>Test</span>
                                     <span>News</span>
                                 </h3>
                             </div>
