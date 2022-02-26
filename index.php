@@ -18,12 +18,10 @@
                         <div class="row w-100">
 
                             <div id="nav-title" class="col-12 col-sm-5 col-md-6">
-                                <a>
-                                    <h3 class="d-flex">
-                                        <span>Uni</span>
-                                        <span>News</span>
-                                    </h3>
-                                </a>
+                                <h3 class="d-flex">
+                                    <span>Uni</span>
+                                    <span>News</span>
+                                </h3>
                             </div>
                             
                             <div id="nav-item" class="col-12 col-sm-7 col-md-6">
