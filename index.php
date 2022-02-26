@@ -29,16 +29,16 @@
                             <div id="nav-item" class="col-12 col-sm-7 col-md-6">
                                 <ul class="nav-item nav-link justify-content-center justify-content-sm-start">
                                     <li class="px-2">
-                                        <a href="./about.html">About</a>
+                                        <a href="./about.php">About</a>
                                     </li>
                                     <li class="px-2">
-                                        <a href="./news.html">News</a>
+                                        <a href="./news.php">News</a>
                                     </li>
                                     <li class="px-2">
-                                        <a href="./contact_us.html">Contact Us</a>
+                                        <a href="./contact_us.php">Contact Us</a>
                                     </li>
                                     <li class="px-2">
-                                        <a href="./admin_login.html">Admin Login</a>
+                                        <a href="./admin_login.php">Admin Login</a>
                                     </li>
                                 </ul>
                             </div>
