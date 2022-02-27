@@ -1,13 +1,3 @@
-@font-face {
-    font-family: LilitaOne;
-    src: url("../font/LilitaOne-Regular.ttf");
-}
-
-@font-face {
-    font-family: Volkorn;
-    src: url("../font/Vollkorn-VariableFont_wght.ttf");
-}
-
 #content {
     padding: 10vh 0;
 }

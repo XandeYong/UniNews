@@ -3,4 +3,5 @@
 <title>UniNews | Dashboard</title>
 <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="../vendor/xande/styling.css">
+<link rel="stylesheet" href="../css/font.css">
 <link rel="stylesheet" href="../css/dashboard/dashboard_master.css">
