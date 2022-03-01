@@ -25,7 +25,7 @@
 
                                 <div id="l-m-body" class="row justify-content-center pt-4 pb-3">
                                     <div id="email-txt" class="col-10 mb-3">
-                                        <input type="text" name="email" class="w-100" placeholder="Email">
+                                        <input type="text" name="username" class="w-100" placeholder="Username">
                                     </div>
                                     
                                     <div id="password-txt" class="col-10 mb-3">
