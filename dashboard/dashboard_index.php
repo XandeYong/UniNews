@@ -1,3 +1,5 @@
+<?php require_once "../backend/dashboard/dashboard_initialization.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +9,11 @@
 </head>
 <body>
     
-<?php
-    require_once('../model/Account.php');
-
-    //Retreiving Session Data
-    session_start();
-    if(isset($_SESSION["account"])){
-        $loginAccount = unserialize($_SESSION["account"]);        
-    }else{
-        header('Location: ../index.php');
-    }
-    
-?>
-    
-    <?php include "../base/dashboard/dashboard_sidebar.php"; ?>
+    <?php include_once "../base/dashboard/dashboard_sidebar.php"; ?>
 
     <div id="wrapper">
         <div class="container-fluid">
-            <?php include "../base/dashboard/dashboard_header.php"; ?>
+            <?php include_once "../base/dashboard/dashboard_header.php"; ?>
 
             <div id="content" class="row">
 

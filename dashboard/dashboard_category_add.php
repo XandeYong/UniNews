@@ -1,3 +1,5 @@
+<?php require_once "../backend/dashboard/dashboard_initialization.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

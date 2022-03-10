@@ -42,7 +42,7 @@
                     <div id="account-dropdown" class="hide">
                         <div id="account-dropdown-box">
                             <div id="account-header" class="account-box">
-                                <h6 id="account-name"><?php echo $loginAccount->get_username() ?></h6>
+                                <h6 id="account-name"><?php echo $loginAccount->get_username(); ?></h6>
                             </div>
                             <div id="account-body" class="account-box">
                                 <a href="#">

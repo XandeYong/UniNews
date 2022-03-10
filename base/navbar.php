@@ -15,10 +15,10 @@
                 <div id="nav-item" class="col-12 col-sm-7 col-md-6">
                     <ul class="nav-item nav-link justify-content-center justify-content-sm-start">
                         <li class="px-2">
-                            <a href="./about.php">About</a>
+                            <a href="./news.php">News</a>
                         </li>
                         <li class="px-2">
-                            <a href="./news.php">News</a>
+                            <a href="./about.php">About</a>
                         </li>
                         <li class="px-2">
                             <a href="./contact_us.php">Contact Us</a>
