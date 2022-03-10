@@ -1,0 +1,71 @@
+.ico, .ico-sm {
+    display: inline-block;
+    min-width: 32px;
+    min-height: 32px;
+    margin-right: 10px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.ico-sm {
+    min-width: 18px;
+    min-height: 18px;
+    margin-right: 10px;
+}
+
+.ico-color-dashboard {
+    filter: invert(99%) sepia(3%) saturate(289%) hue-rotate(303deg) brightness(115%) contrast(89%);
+}
+
+.ico-sidebar {
+    filter: invert(39%) sepia(28%) saturate(238%) hue-rotate(167deg) brightness(92%) contrast(83%);
+}
+
+.ico-sidebar-active {
+    filter: invert(69%) sepia(17%) saturate(191%) hue-rotate(156deg) brightness(91%) contrast(90%);
+}
+
+.ico-white {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(29deg) brightness(102%) contrast(102%);
+}
+
+.ico-unipress {
+    background-image: url("../image/svg/unipress.svg");
+}
+
+.ico-chevron-up {
+    background-image: url("../image/svg/chevron-up.svg");
+}
+
+.ico-chevron-down {
+    background-image: url("../image/svg/chevron-down.svg");
+}
+
+.ico-chevron-left {
+    background-image: url("../image/svg/chevron-left.svg");
+}
+
+.ico-chevron-right {
+    background-image: url("../image/svg/chevron-right.svg");
+}
+
+.ico-menu {
+    background-image: url("../image/svg/list.svg");
+}
+
+.ico-power {
+    background-image: url("../image/svg/power.svg");
+}
+
+.ico-gear {
+    background-image: url("../image/svg/gear.svg");
+}
+
+.ico-dashboard {
+    background-image: url("../image/svg/dashboard.svg");
+}
+
+.ico-list-task {
+    background-image: url("../image/svg/list-solid.svg");
+}

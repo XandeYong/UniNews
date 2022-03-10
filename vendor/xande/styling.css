@@ -215,6 +215,10 @@
     color: grey;
 }
 
+.c-lightgrey {
+    color: lightgrey;
+}
+
 .c-black {
     color: black;
 }
@@ -509,6 +513,15 @@
     text-decoration: none;
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 /* focus, outline & shadow */
 .focusless, .focusless:focus {
@@ -703,6 +716,15 @@
 
 .border-top-3-dimgrey-important {
     border-top: 3px solid dimgray !important;
+}
+
+/* show & hide */
+.show {
+    visibility: visible;
+}
+
+.hide {
+    visibility: hidden;
 }
 
 /* Media */

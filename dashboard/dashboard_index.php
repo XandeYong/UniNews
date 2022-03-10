@@ -7,21 +7,64 @@
 </head>
 <body>
     
+    <?php include "../base/dashboard/dashboard_sidebar.php"; ?>
+
     <div id="wrapper">
         <div class="container-fluid">
-            <?php include "../base/navbar.php" ?>
-            <div id="navbar" class="row">
-                <div class="col-1 col-sm-3">
-                    
-                </div>
-            </div>
+            <?php include "../base/dashboard/dashboard_header.php"; ?>
 
             <div id="content" class="row">
-                
-            </div>
 
+                <div class="col col-lg-4 item">
+                    <div class="item-content">
+                        <div class="row">
+                            <span class="title text-nowrap">CATEGORIES LISTED</span>
+                        </div>
+                        <div class="d-flex justify-content-between state">
+                            <h4>2</h4>
+                            <i class="ico ico-color-dashboard ico-unipress"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-lg-4 item">
+                    <div class="item-content">
+                        <div class="row">
+                            <span class="title text-nowrap">CATEGORIES LISTED</span>
+                        </div>
+                        <div class="d-flex justify-content-between state">
+                            <h4>2</h4>
+                            <i class="ico ico-color-dashboard ico-unipress"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-4 item">
+                    <div class="item-content">
+                        <div class="row">
+                            <span class="title text-nowrap">CATEGORIES LISTED</span>
+                        </div>
+                        <div class="d-flex justify-content-between state">
+                            <h4>2</h4>
+                            <i class="ico ico-color-dashboard ico-unipress"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-4 item">
+                    <div class="item-content">
+                        <div class="row">
+                            <span class="title text-nowrap">CATEGORIES LISTED</span>
+                        </div>
+                        <div class="d-flex justify-content-between state">
+                            <h4>2</h4>
+                            <i class="ico ico-color-dashboard ico-unipress"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <?php include_once "../base/dashboard/dashboard_script.php" ?>
 
 </body>
 </html>
