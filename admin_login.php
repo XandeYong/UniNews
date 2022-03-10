@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="./css/admin_login.css">
 </head>
 <body>
+
+    <?php
+        session_start();
+        if(isset($_SESSION["account"]) && !empty($_SESSION["account"])){            
+            header('Location: dashboard/dashboard_index.php');
+        }
+    ?>
     
     <div id="wrapper">
         <div class="container-fluid">

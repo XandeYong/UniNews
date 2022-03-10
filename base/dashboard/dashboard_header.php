@@ -1,4 +1,4 @@
-<?php 
+<?php    
 
     $curPath = basename($_SERVER["SCRIPT_NAME"]); 
     $title = array("Dashboard" => "dashboard_index.php", 
@@ -19,8 +19,8 @@
             $headerTitle = $key;
         }
     }
-    
 
+    
 ?>
 
 <div id="header" class="row">
@@ -36,13 +36,13 @@
             <div id="account">
                 <div id="account-icon">
                     <a id="account-frame" href="#" class="" >
-                        <img class="unselectable" src="../image/account/Adrian.png" alt="Account Image">
+                        <img class="unselectable" src="../image/account/Profile.png" alt="Account Image">
                     </a>
 
                     <div id="account-dropdown" class="hide">
                         <div id="account-dropdown-box">
                             <div id="account-header" class="account-box">
-                                <h6 id="account-name">Nan Shen</h6>
+                                <h6 id="account-name"><?php echo $loginAccount->get_username() ?></h6>
                             </div>
                             <div id="account-body" class="account-box">
                                 <a href="#">
@@ -51,7 +51,7 @@
                                     </div>
                                 </a>
                                 
-                                <a href="#">
+                                <a href="../backend/logout.php">
                                     <div id="account-logout" class="account-item">
                                         <h6><i class="ico ico-power"></i>Logout</h6>
                                     </div>
