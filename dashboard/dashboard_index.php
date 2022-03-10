@@ -6,6 +6,21 @@
     <link rel="stylesheet" href="../css/dashboard/dashboard_index.css">
 </head>
 <body>
+    <?php
+    require_once('../model/Account.php');
+
+    //Retreiving sessiond data
+    session_start();
+    if(isset($_SESSION["account"])){
+        $loginAccount = unserialize($_SESSION["account"]);
+
+        //Class data output testing
+        echo $loginAccount->get_username();
+    }else{
+
+    }
+    
+    ?>
     
     <?php include "../base/dashboard/dashboard_sidebar.php"; ?>
 
