@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="../css/dashboard/dashboard_index.css">
 </head>
 <body>
-    <?php
+    
+<?php
     require_once('../model/Account.php');
 
     //Retreiving sessiond data
@@ -20,7 +21,7 @@
 
     }
     
-    ?>
+?>
     
     <?php include "../base/dashboard/dashboard_sidebar.php"; ?>
 
