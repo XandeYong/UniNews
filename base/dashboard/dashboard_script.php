@@ -2,9 +2,6 @@
 <script src="../vendor/bootstrap/js/bootstrap.js"></script>
 <script src="../js/dashboard/dashboard_master.js"></script>
 
-<script>
-        
-    </script>
 <?php
     $curPath = basename($_SERVER["SCRIPT_NAME"]);
     $pathList = array("dashboard" => "dashboard_index.php", 

@@ -1,11 +1,22 @@
 $(document).ready(function () {
+    winSetting();
 
-    $("#menu").click(function (e) {
-        if ($("#sidebar").hasClass("hided")) {
+    $("#menu, .hide_sidebar").click(function (e) {
+        $scene1 = $("#sidebar").hasClass("hided");
+        $scene2 = $(window).width() <= 992;
+
+        if ($scene1) {
             sidebar("0", "16rem");
+            if ($scene2) {
+                $(".hide_sidebar").css("display", "block");
+            }
         } else {
-            sidebar("-16rem", "0");  
+            sidebar("-16rem", "0"); 
+            if ($scene2) {
+                $(".hide_sidebar").css("display", "none");
+            }
         }
+
     });
 
     $("body").click(function (e) {
@@ -33,16 +44,44 @@ $(document).ready(function () {
         }
         
     });
+
+    $(window).resize(function () { 
+        if ($(this).width() <= 992) {
+            if (!$("#sidebar").hasClass("hided")) {
+                $("#menu").click();
+                $(".hide_sidebar").css("display", "block");
+            } else {
+                $(".hide_sidebar").css("display", "none");
+            }
+        }
+    });
+
 });
 
+function winSetting() {
+    $width = $(window).width();
+
+    if($width <= 992) {
+        sidebar("-16rem", "0");  
+    }
+}
+
 function sidebar(ml, pl) {
+    $width = $(window).width();
+
     $("#sidebar").animate({
         marginLeft: ml
     });
 
-    $("#wrapper").animate({
-        paddingLeft: pl
-    });
+    if($width > 992) {
+        $("#wrapper").animate({
+            paddingLeft: pl
+        });
+
+    } else {
+        $("#wrapper").css("padding-left", "0");
+    }
+
     $("#sidebar").toggleClass("hided");
 }
 

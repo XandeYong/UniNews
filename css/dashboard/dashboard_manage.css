@@ -1,0 +1,4 @@
+#exist_category tbody, #deleted_category tbody, #exist_category tr .action, #deleted_category tr .action {
+    border: none;
+    border-style: none;
+}

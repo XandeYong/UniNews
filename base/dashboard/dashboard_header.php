@@ -71,7 +71,7 @@
 
         <div id="page-path" class="col justify-content-sm-end">
             <span class="d-flex">
-                <a href="../index.php" class="path">UniNews</a>
+                <a href="../index.php" class="path">UniPress</a>
                 <div>/</div>
                 <a href="#" class="path">Admin</a>
                 <div>/</div>

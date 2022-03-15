@@ -2,11 +2,14 @@
     <div class="container-fluid">
         <div id="sidebar-title" class="row">
             <a href="/UniNews/dashboard/dashboard_index.php" class="text-decoration-none">
-                <h1 id="sidebar-title-text" class="d-flex">
-                    <span>Uni</span>
-                    <span>News</span>
-                    <span><img src="../image/icon - uninews.png" alt="uninews logo"></span>
-                </h1>
+                <div id="sidebar-title-text" >
+                    <h1 class="d-flex">
+                        <span>Uni</span>
+                        <span>Press</span>
+                        <span><img src="../image/icon - uninews.png" alt="uninews logo"></span>
+                    </h1>
+                    <h5>Bulletin</h5>
+                </div>
             </a>
         </div>
         
@@ -154,3 +157,5 @@
         </div>
     </div>
 </div>
+
+<div class="hide_sidebar"></div>

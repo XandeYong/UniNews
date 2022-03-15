@@ -38,6 +38,11 @@
             color: rgb(50, 160, 187);
         }
 
+        #navbar #nav-title > a > h3 > span:nth-child(3) {
+            padding-left: 10px;
+            color: tan;
+        }
+
     #navbar #nav-item > ul {
         display: flex;
         justify-content: start;

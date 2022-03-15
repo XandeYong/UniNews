@@ -4,10 +4,11 @@
             <div class="row w-100">
 
                 <div id="nav-title" class="col-12 col-sm-5 col-md-6">
-                    <a href="/UniNews/index.php" class="text-decoration-none">
+                    <a href="./index.php" class="text-decoration-none">
                         <h3 class="d-flex">
                             <span>Uni</span>
-                            <span>News</span>
+                            <span>Press</span>
+                            <span>Bulletin</span>
                         </h3>
                     </a>
                 </div>

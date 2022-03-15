@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UniNews | Homepage</title>
+    <title>UniPress | Homepage</title>
     <?php include "./base/head.php" ?>
     <link rel="stylesheet" href="./css/index.css">
 </head>

@@ -30,6 +30,14 @@
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(29deg) brightness(102%) contrast(102%);
 }
 
+.ico-red {
+    filter: invert(58%) sepia(24%) saturate(990%) hue-rotate(307deg) brightness(91%) contrast(113%);
+}
+
+.ico-blue {
+    filter: invert(55%) sepia(66%) saturate(443%) hue-rotate(154deg) brightness(103%) contrast(101%);
+}
+
 .ico-unipress {
     background-image: url("../image/svg/unipress.svg");
 }
@@ -68,4 +76,20 @@
 
 .ico-list-task {
     background-image: url("../image/svg/list-solid.svg");
+}
+
+.ico-plus-circle {
+    background-image: url("../image/svg/plus-circle.svg");
+}
+
+.ico-trash {
+    background-image: url("../image/svg/trash.svg");
+}
+
+.ico-edit {
+    background-image: url("../image/svg/edit-fill.svg");
+}
+
+.ico-arrow-clockwise {
+    background-image: url("../image/svg/arrow-clockwise.svg");
 }
