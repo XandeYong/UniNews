@@ -1,7 +1,8 @@
 <?php 
     require_once('../model/Account.php');
+    session_start();
 
-    //Main part [Verification process]
+    //Main Part [Verification process]
     if(isset($_POST["username"]) && isset($_POST["password"])){
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -16,7 +17,7 @@
     }
 
 
-    //Establishing connection
+    //Establishing Connection
     function dbConnection(){
         $servername = "localhost";
         $username = "root";
@@ -35,7 +36,7 @@
           
     }
     
-    //Query execution module
+    //Query Execution Module
     function executeQuery($conn, $username, $password){
 
         //Query
@@ -44,11 +45,11 @@
         //Running Query
         $result = $conn->query($sql);
 
-        //Creating class based on result
+        //Creating Class Based On Result
         if($result->num_rows > 0){
             $row = $result -> fetch_assoc();
 
-            // Start the session
+            // Start The Session
             session_start();
 
             $loginAccount = new Account($row["account_id"], $row["username"], $row["email"], $row["password"]); 
