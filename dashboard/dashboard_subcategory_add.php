@@ -16,7 +16,7 @@
             <?php include "../base/dashboard/dashboard_header.php"; ?>
 
             <div id="content" class="row">
-                <div id="add_subcategory" class="col-12 add_category">
+                <div id="add_subcategory" class="col-12 add_category form-border">
                     <form action="" method="POST">
                         <div class="content-header">
                             <div class="row px-3 py-2 title">
@@ -31,9 +31,9 @@
                                 <div class="category col col-lg-6 mt-2 mt-lg-0">
                                     <select name="category" class="category input w-100" required>
                                         <option hidden disabled selected value>Select a category</option>
-                                        <option value="UCSI">UCSI University</option>
-                                        <option value="TARUC">TARUC University</option>
-                                        <option value="UTAR">UTAR University</option>
+                                        <option value="UCSI University">UCSI University</option>
+                                        <option value="TARUC University">TARUC University</option>
+                                        <option value="UTAR University">UTAR University</option>
                                     </select>
                                 </div>
                             </div>

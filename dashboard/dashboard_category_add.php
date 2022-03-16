@@ -16,7 +16,7 @@
             <?php include "../base/dashboard/dashboard_header.php"; ?>
 
             <div id="content" class="row">
-                <div id="add_category" class="col-12 add_category">
+                <div id="add_category" class="col-12 add_category form-border">
                     <form action="" method="POST">
                         <div class="content-header">
                             <div class="row px-3 py-2 title">

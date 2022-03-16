@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="row mt-4 table-responsive">
-                            <table id="exist_category" class="table table-hover border-3 border-primary border-radius-4px">
+                            <table id="exist_category" class="table table-hover border-3 border-primary border-radius-4px borderless-tbody-last">
                                 <thead class="bg-primary text-white">
                                     <tr>
                                         <th scope="col">#</th>
@@ -49,13 +49,15 @@
                                         <td>UCSI Campus News</td>
                                         <td class="text-center">2021-03-01 12:16:58</td>
                                         <td class="text-center">2021-03-01 12:16:58</td>
-                                        <td class="action d-flex align-items-center justify-content-center">
-                                            <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_subcategory_modal">
-                                                <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
-                                            </button>
-                                            <button class="delete borderless backgroundless p-0" title="delete">
-                                                <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
-                                            </button>
+                                        <td class="action">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_post_modal">
+                                                    <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
+                                                </button>
+                                                <button class="delete borderless backgroundless p-0" title="delete">
+                                                    <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -70,7 +72,7 @@
                         </div>
 
                         <div class="row mt-4 table-responsive">
-                            <table id="deleted_category" class="table table-hover border-3 border-danger border-radius-4px">
+                            <table id="deleted_category" class="table table-hover border-3 border-danger border-radius-4px borderless-tbody-last">
                                 <thead class="bg-danger text-white">
                                     <tr>
                                         <th scope="col">#</th>
@@ -90,14 +92,20 @@
                                         <td>UCSI Campus News</td>
                                         <td class="text-center">2021-03-01 12:16:58</td>
                                         <td class="text-center">2021-03-01 12:16:58</td>
-                                        <td class="action d-flex align-items-center justify-content-center">
-                                            <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_subcategory_modal">
-                                                <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
-                                            </button>
-                                            <button class="recover borderless backgroundless p-0" title="recover">
-                                                <i class="ico ico-sm ico-red ico-arrow-clockwise mx-auto"></i>
-                                            </button>
+                                        <td class="action">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_subcategory_modal">
+                                                    <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
+                                                </button>
+                                                <button class="recover borderless backgroundless p-0" title="recover">
+                                                    <i class="ico ico-sm ico-red ico-arrow-clockwise mx-auto"></i>
+                                                </button>
+                                            </div>
                                         </td>
+                                    </tr>
+
+                                    <tr id="">
+                                        <td colspan="7"><h5 class="c-red text-center">No record found</h5></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -128,11 +136,11 @@
                                     <label for="category">Category</label>
                                 </div>
                                 <div class="category col col-lg-8 mt-2 mt-lg-0">
-                                    <select name="category" class="category input w-100" required>
+                                    <select name="category" class="input w-100" required>
                                         <option hidden disabled selected value>Select a category</option>
-                                        <option value="UCSI">UCSI University</option>
-                                        <option value="TARUC">TARUC University</option>
-                                        <option value="UTAR">UTAR University</option>
+                                        <option value="UCSI University">UCSI University</option>
+                                        <option value="TARUC University">TARUC University</option>
+                                        <option value="UTAR University">UTAR University</option>
                                     </select>
                                 </div>
                             </div>

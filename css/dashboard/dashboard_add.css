@@ -2,10 +2,9 @@
     padding: 1rem;
 }
 
-#content > div{
+.form-border {
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 4px;
-
 }
 
 #content .add_category .title {
