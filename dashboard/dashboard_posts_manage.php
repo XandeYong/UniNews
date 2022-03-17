@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UniNews | Dashboard</title>
+    <title>UniPress | Dashboard</title>
     <?php include "../base/dashboard/dashboard_head.php" ?>
     <link rel="stylesheet" href="../css/dashboard/dashboard_manage.css">
 </head>
@@ -16,7 +16,7 @@
             <?php include "../base/dashboard/dashboard_header.php"; ?>
 
             <div id="content" class="row p-3">
-                <div id="manage_post" class="col-12 form-border">
+                <div id="manage_posts" class="col-12 form-border">
                     <div class="row p-3 table-responsive">
                         <table class="table table-hover border-radius-4px borderless-tbody-last">
                             <thead class="bg-dark text-white">
