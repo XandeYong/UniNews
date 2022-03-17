@@ -1,6 +1,70 @@
 <?php    
 
     $curPath = basename($_SERVER["SCRIPT_NAME"]); 
+
+    //0:url, 1:title, 2:sitemap_current, 3:(sitemap_parent, link), 4:(sitemap_grand, link)
+    $pages = array(
+        array("dashboard_index.php", "Dashboard", "Dashboard", 
+            array("Admin", "./dashboard_index.php"), 
+            array("UniPress", "../index.php")
+        ),
+
+        array("dashboard_category_add.php", "Add Category", "Add Category", 
+            array("Category", "./dashboard_category_add.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_category_manage.php", "Manage Categories", "Manage Categories", 
+            array("Category", "./dashboard_category_add.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_subcategory_add.php", "Add SubCategory", "Add Subcategory", 
+            array("Subcategory", "./dashboard_subcategory_add.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_subcategory_manage.php", "Manage SubCategories", "Manage Subcategories", 
+            array("Subcategory", "./dashboard_subcategory_add.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_posts_add.php", "Add Post", "Add Post", 
+            array("Posts", "./dashboard_posts_add.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_posts_manage.php", "Manage Posts", "Manage Posts", 
+            array("Posts", "./dashboard_posts_add.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_posts_trash.php", "Trashed Posts", "Trashed Posts", 
+            array("Posts", "./dashboard_posts_add.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_pages_contactus.php", "Contact us Page", "Contact us", 
+            array("Pages", "./dashboard_pages_contactus.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_pages_aboutus.php", "About us Page", "About us", 
+            array("Pages", "./dashboard_pages_contactus.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_comments_approval.php", "Manage Unapproved Comments", "Unapproved Comments", 
+            array("Comments", "./dashboard_comments_approval.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+
+        array("dashboard_comments_approved.php", "Manage Approved Comments", "Approved Comments", 
+            array("Comments", "./dashboard_comments_approval.php"), 
+            array("Admin", "./dashboard_index.php")
+        ),
+    );
+
     $title = array("Dashboard" => "dashboard_index.php", 
                         "Add Category" => "dashboard_category_add.php", 
                         "Manage Categories" => "dashboard_category_manage.php",
@@ -13,10 +77,22 @@
                         "About us Page" => "dashboard_pages_aboutus.php",
                         "Manage Unapproved Comments" => "dashboard_comments_approval.php",
                         "Manage Approved Comments" => "dashboard_comments_approved.php");
+                        
+    $headerTitle;
+    $sitemap_current;
+    $sitemap_parent;
+    $sitemap_parent_link;
+    $sitemap_grandparent;
+    $sitemap_grandparent_link;
 
-    foreach ($title as $key=> $path) {
-        if ($curPath == $path) {
-            $headerTitle = $key;
+    foreach ($pages as $page) {
+        if ($curPath == $page[0]) {
+            $headerTitle = $page[1];
+            $sitemap_current = $page[2];
+            $sitemap_parent = $page[3][0];
+            $sitemap_parent_link = $page[3][1];
+            $sitemap_grandparent = $page[4][0];
+            $sitemap_grandparent_link = $page[4][1];
         }
     }
 
@@ -71,11 +147,11 @@
 
         <div id="page-path" class="col justify-content-sm-end">
             <span class="d-flex">
-                <a href="../index.php" class="path">UniPress</a>
+                <a href="<?php echo $sitemap_grandparent_link; ?>" class="path"><?php echo $sitemap_grandparent; ?></a>
                 <div>/</div>
-                <a href="#" class="path">Admin</a>
+                <a href="<?php echo $sitemap_parent_link; ?>" class="path"><?php echo $sitemap_parent; ?></a>
                 <div>/</div>
-                <span class="path">Dashboard</span>
+                <span class="path"><?php echo $sitemap_current; ?></span>
             </span>
         </div>
     </div>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UniNews | Dashboard</title>
+    <title>UniPress | Dashboard</title>
     <?php include "../base/dashboard/dashboard_head.php" ?>
     <link rel="stylesheet" href="../css/dashboard/dashboard_manage.css">
 </head>
