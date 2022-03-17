@@ -51,7 +51,7 @@
                                         <td class="text-center">2021-03-01 12:16:58</td>
                                         <td class="action">
                                             <div class="d-flex align-items-center justify-content-center">
-                                                <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_post_modal">
+                                                <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_subcategory_modal">
                                                     <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
                                                 </button>
                                                 <button class="delete borderless backgroundless p-0" title="delete">

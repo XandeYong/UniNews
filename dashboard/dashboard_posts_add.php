@@ -16,7 +16,7 @@
             <?php include "../base/dashboard/dashboard_header.php"; ?>
 
             <div id="content" class="row justify-content-center">
-                <div class="col-12 col-lg-10">
+                <div id="add_posts" class="col-12 col-lg-10">
                     <form action="" method="POST">
                         <div class="container mt-3">
                             <div class="row">
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="mt-1">
                                     <select class="input w-100" name="category" required>
-                                        <option value disabled hidden>Select Category</option>
+                                        <option value disabled hidden selected>Select Category</option>
                                         <option value="UCSI University">UCSI University</option>
                                         <option value="TARUC University">TARUC University</option>
                                         <option value="UTAR University">UTAR University</option>
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="mt-1">
                                     <select class="input w-100" name="category" required>
-                                        <option value disabled hidden>Select Sub Category</option>
+                                        <option value disabled hidden selected>Select Sub Category</option>
                                         <option value="UCSI Campus">UCSI Campus</option>
                                         <option value="TARUC Campus">TARUC Campus</option>
                                         <option value="UTAR Campus">UTAR Campus</option>

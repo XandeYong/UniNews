@@ -39,7 +39,7 @@ $(document).ready(function () {
         $descInput.val($desc);
     });
 
-    $("#manage_post .edit, #trash_post .edit").click(function (e) {
+    $("#manage_posts .edit, #trash_posts .edit").click(function (e) {
         $id = $(this).parent().parent().parent().attr("id");
         $title = $(this).parent().parent().siblings()[0].innerHTML;
         $category = $(this).parent().parent().siblings()[1].innerHTML;
@@ -71,6 +71,5 @@ $(document).ready(function () {
         $idInput.val($id);
         $titleInput.val($title);
     });
-
 
 });

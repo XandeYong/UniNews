@@ -12,7 +12,7 @@
                         "Contact us Page" => "dashboard_pages_contactus.php",
                         "About us Page" => "dashboard_pages_aboutus.php",
                         "Manage Unapproved Comments" => "dashboard_comments_approval.php",
-                        "Managfe Approved Comments" => "dashboard_comments_approved.php");
+                        "Manage Approved Comments" => "dashboard_comments_approved.php");
 
     foreach ($title as $key=> $path) {
         if ($curPath == $path) {

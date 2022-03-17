@@ -38,6 +38,14 @@
     filter: invert(55%) sepia(66%) saturate(443%) hue-rotate(154deg) brightness(103%) contrast(101%);
 }
 
+.ico-orange {
+    filter: invert(82%) sepia(34%) saturate(6743%) hue-rotate(358deg) brightness(101%) contrast(102%);
+}
+
+.ico-warning {
+    filter: invert(80%) sepia(50%) saturate(3330%) hue-rotate(3deg) brightness(110%) contrast(95%);
+}
+
 .ico-unipress {
     background-image: url("../image/svg/unipress.svg");
 }
@@ -92,4 +100,16 @@
 
 .ico-arrow-clockwise {
     background-image: url("../image/svg/arrow-clockwise.svg");
+}
+
+.ico-check-square {
+    background-image: url("../image/svg/check-square-fill.svg");
+}
+
+.ico-thumbs-up {
+    background-image: url("../image/svg/thumbs-up-solid.svg");
+}
+
+.ico-thumbs-down {
+    background-image: url("../image/svg/thumbs-down-solid.svg");
 }
