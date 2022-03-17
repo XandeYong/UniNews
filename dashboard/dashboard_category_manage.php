@@ -1,14 +1,50 @@
 <?php require_once "../backend/dashboard/dashboard_initialization.php" ?>
+<?php require_once "../model/Category.php" ?>
+
+<?php
+//Establishing Connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "uninews";
+
+//Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//Query
+$sql = "SELECT * FROM category";
+
+//Executing Query
+$result = $conn->query($sql);
+
+//Category Object Array
+$categoryArray = array();
+
+//Fetching Result
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        $categoryArray[] = new Category($row["category_id"], $row["category"], $row["description"], $row["datetime"], $row["last_modify"]);
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>UniNews | Dashboard</title>
     <?php include "../base/dashboard/dashboard_head.php" ?>
     <link rel="stylesheet" href="../css/dashboard/dashboard_manage.css">
 </head>
+
 <body>
-    
+
     <?php include "../base/dashboard/dashboard_sidebar.php"; ?>
 
     <div id="wrapper">
@@ -41,23 +77,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr id="C1">
-                                        <th scope="row">1</th>
-                                        <td>UCSI University</td>
-                                        <td>News Regarding UCSI University</td>
-                                        <td class="text-center">2021-03-01 12:16:58</td>
-                                        <td class="text-center">2021-03-01 12:16:58</td>
-                                        <td class="action">
-                                            <div class="d-flex align-items-center justify-content-center">
-                                                <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_category_modal">
-                                                    <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
-                                                </button>
-                                                <button class="delete borderless backgroundless p-0" title="delete">
-                                                    <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
-                                                </button>
-                                            </div>
+                                    <?php if (!empty($categoryArray)) {
+                                        foreach ($categoryArray as $category) {
+                                    ?>
+                                            <tr id="C1">
+                                                <th scope="row"><?php echo $category->get_categoryID() ?></th>
+                                                <td><?php echo $category->get_category() ?></td>
+                                                <td><?php echo $category->get_categoryDesc() ?></td>
+                                                <td class="text-center"><?php echo $category->get_categoryDate() ?></td>
+                                                <td class="text-center"><?php if (!empty($category->get_categoryDateModify())) {
+                                                                            echo $category->get_categoryDateModify();
+                                                                        } ?></td>
+                                                <td class="action">
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_category_modal">
+                                                            <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
+                                                        </button>
+                                                        <button class="delete borderless backgroundless p-0" title="delete" href="www.facebook.com">
+                                                            <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <tr id="">
+                                        <td colspan="6">
+                                            <h5 class="c-red text-center">No record found</h5>
                                         </td>
                                     </tr>
+                                    <?php 
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -101,7 +154,9 @@
                                     </tr>
 
                                     <tr id="">
-                                        <td colspan="6"><h5 class="c-red text-center">No record found</h5></td>
+                                        <td colspan="6">
+                                            <h5 class="c-red text-center">No record found</h5>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -157,4 +212,5 @@
     </div>
 
 </body>
+
 </html>
