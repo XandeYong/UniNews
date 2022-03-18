@@ -17,7 +17,7 @@
 
             <div id="content" class="row">
                 <div id="add_category" class="col-12 add_category form-border">
-                    <form action="" method="POST">
+                    <form action="../backend/addCategory.php" method="POST">
                         <div class="content-header">
                             <div class="row px-3 py-2 title">
                                 <h5>Add Category</h5>
