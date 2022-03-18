@@ -14,9 +14,9 @@
                 </div>
                 
                 <div id="nav-item" class="col-12 col-sm-7 col-md-6">
-                    <ul class="nav-item nav-link justify-content-center justify-content-sm-start">
+                    <ul class="nav-item nav-link justify-content-center justify-content-sm-center">
                         <li class="px-2">
-                            <a href="./news.php">News</a>
+                            <a href="./index.php">News</a>
                         </li>
                         <li class="px-2">
                             <a href="./about.php">About</a>

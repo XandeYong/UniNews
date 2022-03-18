@@ -35,7 +35,7 @@
 <head>
     <title>UniPress | About</title>
     <?php include "./base/head.php" ?>
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/about.css">
 </head>
 <body>
     
@@ -43,9 +43,34 @@
         <div class="container-fluid">
             <?php include "./base/navbar.php" ?>
 
-            <div id="content" class="row">
-                <?php echo $aboutUs; ?>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdILvkMWaWTOAXwYKrCq6808s_22IhUc7hgMgCP2Yn3ecpgAQ/viewform?embedded=true" width="640" height="1170" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <div id="content">
+                <div id="aboutus" class="container">
+                    <div class="row justify-content-center py-4">
+                        <div class="col-12 col-md-8">
+                            <div id="aboutus_title">
+                                <h2>About UniPress Bulletin</h2>
+                            </div>
+                            <div id="sitemap" class="p-1">
+                                <div class="path p-2">
+                                    <span><a href="">Home</a></span>
+                                    <span>/</span>
+                                    <span>About</span>
+                                </div>
+                            </div>
+                            <div id="aboutus_content" class="py-4">
+                                <p>
+                                    <?php //echo $aboutUs; ?>
+                                    UniNews is a online news website based for Universities students. 
+                                    So far we only partnered with 3 Universities that is UCSI, KDU and SUNWAY. 
+                                    The objective of this news website is that we could bring you daily updated news about your Universities and keep you up to date. 
+                                    There will be few categories such as clubs, campus, sports and student councils news that will be published. 
+                                    And of course if you guys have some opinion on the news you can comment on it. Moreover, if you have more question you can contact us at UniNews@gmail.com. 
+                                    Thank you.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
