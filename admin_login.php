@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UniNews | Admin Login</title>
+    <title>UniPress | Admin Login</title>
     <?php include "./base/head.php" ?>
     <link rel="stylesheet" href="./css/admin_login.css">
 </head>

@@ -37,9 +37,9 @@
                                             <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_post_modal">
                                                 <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
                                             </button>
-                                            <button class="delete borderless backgroundless p-0" title="delete">
+                                            <a href="#" class="delete borderless backgroundless p-0" title="delete">
                                                 <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -53,9 +53,9 @@
                                             <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_post_modal">
                                                 <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
                                             </button>
-                                            <button class="delete borderless backgroundless p-0" title="delete">
+                                            <a href="#" class="delete borderless backgroundless p-0" title="delete">
                                                 <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

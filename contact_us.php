@@ -33,7 +33,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UniNews | Contact Us</title>
+    <title>UniPress | Contact Us</title>
     <?php include "./base/head.php" ?>
     <link rel="stylesheet" href="./css/index.css">
 </head>

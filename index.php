@@ -12,7 +12,7 @@
             <?php include "./base/navbar.php" ?>
 
             <div id="content" class="row">
-                
+
             </div>
 
         </div>

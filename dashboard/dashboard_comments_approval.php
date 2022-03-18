@@ -45,9 +45,9 @@
                                             <button class="approve borderless backgroundless p-0 me-1" title="approve">
                                                 <i class="ico ico-sm ico-blue ico-thumbs-up mx-auto"></i>
                                             </button>
-                                            <button class="delete borderless backgroundless p-0" title="delete">
+                                            <a href="#" class="delete borderless backgroundless p-0" title="delete">
                                                 <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
