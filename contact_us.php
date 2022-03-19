@@ -1,17 +1,5 @@
 <?php 
-    //DB Variables
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "uninews";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);  
-
-    //Check Connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include "./backend/connectDB.php";
 
     //Query
     $sql = "SELECT * FROM contact_us";
@@ -27,6 +15,8 @@
         $title = $row["title"];
         $desc = $row["description"];
     }
+
+    $conn->close();
 
 ?>
 <!-- <h2><?php //echo $title; ?></h2>
@@ -50,11 +40,12 @@
                     <div class="row justify-content-center py-5">
                         <div id="contactus_content" class="col col-md-8 p-3">
                             <div class="title">
-                                <h3>Contact Us</h3>
+                                <h3><?php echo $title; ?></h3>
                             </div>
                             <hr/>
                             <div id="contactus_body" class="px-2 py-1">
                                 <p>
+                                    <?php //echo $desc; ?>
                                     UniNews is a online news website based for Universities students. 
                                     So far we only partnered with 3 Universities that is UCSI, KDU and SUNWAY. 
                                     The objective of this news website is that we could bring you daily updated news about your Universities and keep you up to date. 

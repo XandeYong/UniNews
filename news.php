@@ -76,6 +76,27 @@
                                     </div>
                                 </form>
                             </div>
+
+                            <div id="comment-section" class="mb-5">
+                                <div class="post-user-comment p-3 mb-3">
+                                    <div class="p-u-c-header d-flex justify-content-between">
+                                        <div class="name">
+                                            <h5>Ahli</h5>
+                                        </div>
+                                        <div class="datetime">
+                                            <b>Date:</b> 2022-03-03 10:49:13
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="p-u-c-body">
+                                        <div class="comment">
+                                            <p>Testing a message here</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
                             
                         </div>
                         

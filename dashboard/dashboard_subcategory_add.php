@@ -1,4 +1,38 @@
 <?php require_once "../backend/dashboard/dashboard_initialization.php" ?>
+<?php require_once "../model/Category.php" ?>
+
+<?php
+//Establishing Connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "unipress";
+
+//Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//Query
+$sql = "SELECT category_id, category FROM category WHERE status='show'";
+//Executing Query
+$result = $conn->query($sql);
+
+//Category Object Array
+$categoryArray_show = array();
+
+//Fetching Result
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        $categoryArray_show[] = new Category($row["category_id"], $row["category"], null, null, null);
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +51,7 @@
 
             <div id="content" class="row">
                 <div id="add_subcategory" class="col-12 add_category form-border">
-                    <form action="" method="POST">
+                    <form action="../backend/dashboard/addSubcategory.php" method="POST">
                         <div class="content-header">
                             <div class="row px-3 py-2 title">
                                 <h5>Add SubCategory</h5>
@@ -31,9 +65,18 @@
                                 <div class="category col col-lg-6 mt-2 mt-lg-0">
                                     <select name="category" class="category input w-100" required>
                                         <option hidden disabled selected value>Select a category</option>
-                                        <option value="UCSI University">UCSI University</option>
-                                        <option value="TARUC University">TARUC University</option>
-                                        <option value="UTAR University">UTAR University</option>
+                                    <?php if (!empty($categoryArray_show)) {
+                                        foreach ($categoryArray_show as $category) {
+                                    ?>
+                                        <option value="<?php echo $category->get_categoryID(); ?>"><?php echo $category->get_category(); ?></option>
+                                    <?php
+                                        }
+                                    } else {
+                                    ?>
+                                        <option disabled value="">No Category Found</option>
+                                    <?php 
+                                    }
+                                    ?>
                                     </select>
                                 </div>
                             </div>

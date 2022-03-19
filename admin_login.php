@@ -36,7 +36,7 @@
                                     </div>
                                     
                                     <div id="password-txt" class="col-10 mb-3">
-                                        <input type="text" name="password" class="w-100" placeholder="Password">
+                                        <input type="password" name="password" class="w-100" placeholder="Password">
                                     </div>
 
                                     <div id="login-btn" class="col-10 text-center">

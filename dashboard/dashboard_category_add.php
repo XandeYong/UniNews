@@ -17,7 +17,7 @@
 
             <div id="content" class="row">
                 <div id="add_category" class="col-12 add_category form-border">
-                    <form action="../backend/addCategory.php" method="POST">
+                    <form action="../backend/dashboard/controlCategory.php" method="POST">
                         <div class="content-header">
                             <div class="row px-3 py-2 title">
                                 <h5>Add Category</h5>
@@ -45,7 +45,7 @@
                             <div class="row row-cols-1 row-cols-lg-2 pt-1 pb-4">
                                 <div class="col col-lg-2"></div>
                                 <div class="category-desc col col-lg-6">
-                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit">
+                                    <button class="btn btn-primary" type="submit" value="add" name="submit">Submit</button>
                                 </div>
                             </div>
 

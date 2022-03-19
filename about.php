@@ -1,17 +1,5 @@
 <?php 
-    //DB Variables
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "uninews";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);  
-
-    //Check Connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include "./backend/connectDB.php";
 
     //Query
     $sql = "SELECT * FROM about";
@@ -26,6 +14,8 @@
         //Setting Into Variables
         $desc = $row["description"];
     }
+
+    $conn->close();
 
 ?>
 
@@ -52,7 +42,7 @@
                             </div>
                             <div id="sitemap" class="p-1">
                                 <div class="path p-2">
-                                    <span><a href="">Home</a></span>
+                                    <span><a href="./index.php">Home</a></span>
                                     <span>/</span>
                                     <span>About</span>
                                 </div>

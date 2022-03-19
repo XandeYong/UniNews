@@ -1,5 +1,5 @@
 <?php
-class Category{
+class Category {
     //Variables
     private $categoryID;
     private $category;

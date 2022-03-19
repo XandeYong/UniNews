@@ -42,9 +42,9 @@
                                     <td class="text-center">2021-03-01 12:16:58</td>
                                     <td class="action">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <button class="approve borderless backgroundless p-0 me-1" title="unapprove">
+                                            <a href="#" class="approve borderless backgroundless p-0 me-1" title="unapprove">
                                                 <i class="ico ico-sm ico-orange ico-thumbs-down mx-auto"></i>
-                                            </button>
+                                            </a>
                                             <a href="#" class="delete borderless backgroundless p-0" title="delete">
                                                 <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
                                             </a>

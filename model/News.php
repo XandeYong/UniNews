@@ -1,5 +1,5 @@
 <?php
-class News{
+class News {
     //Variables
     private $news_id;
     private $title;
@@ -11,7 +11,7 @@ class News{
     private $comments;
 
     //Constructors
-    function __construct($news_id, $title, $description, $image, $status, $category, $subCategory){
+    function __construct($news_id, $title, $description, $image, $status, $category, $subCategory, $comments){
         $this->news_id = $news_id;
         $this->title = $title;
         $this->description = $description;
@@ -19,7 +19,7 @@ class News{
         $this->status = $status;
         $this->category = $category;
         $this->subCategory = $subCategory;
-        $this->comments = array();
+        $this->comments = $comments;
     }
 
     //Getter & Setter

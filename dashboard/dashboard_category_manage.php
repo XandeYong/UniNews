@@ -6,7 +6,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "uninews";
+$dbname = "unipress";
 
 //Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,19 +17,29 @@ if ($conn->connect_error) {
 }
 
 //Query
-$sql = "SELECT * FROM category";
+$sql = "SELECT * FROM category WHERE status='show'";
+$sql2 = "SELECT * FROM category WHERE status='hide'";
 
 //Executing Query
 $result = $conn->query($sql);
+$result2 = $conn->query($sql2);
 
 //Category Object Array
-$categoryArray = array();
+$categoryArray_show = array();
+$categoryArray_hide = array();
 
 //Fetching Result
 if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
-        $categoryArray[] = new Category($row["category_id"], $row["category"], $row["description"], $row["datetime"], $row["last_modify"]);
+        $categoryArray_show[] = new Category($row["category_id"], $row["category"], $row["description"], $row["datetime"], $row["last_modify"]);
+    }
+}
+
+if ($result2->num_rows > 0) {
+
+    while ($row = $result2->fetch_assoc()) {
+        $categoryArray_hide[] = new Category($row["category_id"], $row["category"], $row["description"], $row["datetime"], $row["last_modify"]);
     }
 }
 ?>
@@ -77,31 +87,31 @@ if ($result->num_rows > 0) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (!empty($categoryArray)) {
+                                    <?php if (!empty($categoryArray_show)) {
                                         $count = 1;
-                                        foreach ($categoryArray as $category) {
+                                        foreach ($categoryArray_show as $category) {
                                     ?>
-                                            <tr id="<?php echo $category->get_categoryID() ?>">
-                                                <th scope="row"><?php echo $count++ ?></th>
-                                                <td><?php echo $category->get_category() ?></td>
-                                                <td><?php echo $category->get_categoryDesc() ?></td>
-                                                <td class="text-center"><?php echo $category->get_categoryDate() ?></td>
-                                                <td class="text-center">
-                                                    <?php if (!empty($category->get_categoryDateModify())) {
-                                                        echo $category->get_categoryDateModify();
-                                                    } ?>
-                                                </td>
-                                                <td class="action">
-                                                    <div class="d-flex align-items-center justify-content-center">
-                                                        <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_category_modal">
-                                                            <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
-                                                        </button>
-                                                        <a href="#" class="delete borderless backgroundless p-0" title="delete">
-                                                            <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tr id="<?php echo $category->get_categoryID() ?>">
+                                            <th scope="row"><?php echo $count++ ?></th>
+                                            <td><?php echo $category->get_category() ?></td>
+                                            <td><?php echo $category->get_categoryDesc() ?></td>
+                                            <td class="text-center"><?php echo $category->get_categoryDate() ?></td>
+                                            <td class="text-center">
+                                                <?php if (!empty($category->get_categoryDateModify())) {
+                                                    echo $category->get_categoryDateModify();
+                                                } ?>
+                                            </td>
+                                            <td class="action">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_category_modal">
+                                                        <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
+                                                    </button>
+                                                    <a href="../backend/dashboard/updateStatus.php?page=category&type=hide&id=<?php echo $category->get_categoryID() ?>" class="delete borderless backgroundless p-0" title="delete">
+                                                        <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     <?php
                                         }
                                     } else {
@@ -138,29 +148,44 @@ if ($result->num_rows > 0) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr id="C2">
-                                        <th scope="row">1</th>
-                                        <td>UCSI University</td>
-                                        <td>News Regarding UCSI University</td>
-                                        <td class="text-center">2021-03-01 12:16:58</td>
-                                        <td class="text-center">2021-03-01 12:16:58</td>
+                                    <?php if (!empty($categoryArray_hide)) {
+                                        $count = 1;
+                                        foreach ($categoryArray_hide as $category) {
+                                    ?>
+                                    <tr id="<?php echo $category->get_categoryID() ?>">
+                                        <th scope="row"><?php echo $count++ ?></th>
+                                        <td><?php echo $category->get_category() ?></td>
+                                        <td><?php echo $category->get_categoryDesc() ?></td>
+                                        <td class="text-center"><?php echo $category->get_categoryDate() ?></td>
+                                        <td class="text-center">
+                                            <?php if (!empty($category->get_categoryDateModify())) {
+                                                echo $category->get_categoryDateModify();
+                                            } ?>
+                                        </td>
                                         <td class="action">
                                             <div class="d-flex align-items-center justify-content-center">
                                                 <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_category_modal">
                                                     <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
                                                 </button>
-                                                <a href="#" class="recover borderless backgroundless p-0" title="recover">
+                                                <a href="../backend/dashboard/updateStatus.php?page=category&type=show&id=<?php echo $category->get_categoryID() ?>" class="recover borderless backgroundless p-0" title="recover">
                                                     <i class="ico ico-sm ico-red ico-arrow-clockwise mx-auto"></i>
                                                 </a>
                                             </div>
                                         </td>
                                     </tr>
-
-                                    <tr id="">
+                                    <?php
+                                        }
+                                    } else {
+                                    ?>
+                                        <tr id="">
                                         <td colspan="6">
                                             <h5 class="c-red text-center">No record found</h5>
                                         </td>
                                     </tr>
+                                    <?php 
+                                    }
+                                    ?>
+
                                 </tbody>
                             </table>
                         </div>
@@ -178,7 +203,7 @@ if ($result->num_rows > 0) {
     <div class="modal fade" id="update_category_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Update Category Modal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="" method="POST">
+                <form action="../backend/dashboard/controlCategory.php" method="POST">
                     <input type="text" name="id" value="" hidden>
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Update Category</h5>
@@ -207,7 +232,7 @@ if ($result->num_rows > 0) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-warning">Update</button>
+                        <button type="submit" name="submit" value="edit" class="btn btn-warning">Update</button>
                     </div>
                 </form>
             </div>
