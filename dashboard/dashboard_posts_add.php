@@ -1,4 +1,50 @@
 <?php require_once "../backend/dashboard/dashboard_initialization.php" ?>
+<?php require_once "../model/Category.php" ?>
+<?php require_once "../model/Subcategory.php" ?>
+
+<?php
+//Establishing Connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "unipress";
+
+//Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//Query
+$sql = "SELECT category_id, category FROM category WHERE status='show'";
+$sql2 = "SELECT subcategory_id, subcategory FROM subcategory WHERE status='show'";
+
+//Executing Query
+$result = $conn->query($sql);
+$result2 = $conn->query($sql2);
+
+//Category Object Array
+$categoryArray_show = array();
+$subcategoryArray_show = array();
+
+//Fetching Result
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        $categoryArray_show[] = new Category($row["category_id"], $row["category"], null, null, null);
+    }
+}
+
+if ($result2->num_rows > 0) {
+
+    while ($row = $result2->fetch_assoc()) {
+        $subcategoryArray_show[] = new Subcategory($row["subcategory_id"], $row["subcategory"], null, null, null, null);
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,14 +63,14 @@
 
             <div id="content" class="row justify-content-center">
                 <div id="add_posts" class="col-12 col-lg-10">
-                    <form action="" method="POST">
+                    <form action="../backend/dashboard/controlPosts.php" method="POST" enctype="multipart/form-data">
                         <div class="container mt-3">
                             <div class="row">
                                 <div>
                                     <label class="w-100" for="title">Post Title</label>
                                 </div>
                                 <div class="mt-1">
-                                    <input class="input w-100 ps-2" type="text" name="title" placeholder="Enter title" required>
+                                    <input class="form-control input w-100 ps-2" type="text" name="title" placeholder="Enter title" required>
                                 </div>
                             </div>
 
@@ -33,11 +79,20 @@
                                     <label class="w-100" for="title">Category</label>
                                 </div>
                                 <div class="mt-1">
-                                    <select class="input w-100" name="category" required>
+                                    <select class="form-control input w-100" name="category" required>
                                         <option value disabled hidden selected>Select Category</option>
-                                        <option value="UCSI University">UCSI University</option>
-                                        <option value="TARUC University">TARUC University</option>
-                                        <option value="UTAR University">UTAR University</option>
+                                        <?php if (!empty($categoryArray_show)) {
+                                            foreach ($categoryArray_show as $category) {
+                                        ?>
+                                            <option value="<?php echo $category->get_categoryID(); ?>"><?php echo $category->get_category(); ?></option>
+                                        <?php
+                                            }
+                                        } else {
+                                        ?>
+                                            <option disabled value="">No Category Found</option>
+                                        <?php 
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -47,11 +102,9 @@
                                     <label class="w-100" for="title">Sub Category</label>
                                 </div>
                                 <div class="mt-1">
-                                    <select class="input w-100" name="category" required>
+                                    <select class="form-control input w-100" name="subcategory" required>
                                         <option value disabled hidden selected>Select Sub Category</option>
-                                        <option value="UCSI Campus">UCSI Campus</option>
-                                        <option value="TARUC Campus">TARUC Campus</option>
-                                        <option value="UTAR Campus">UTAR Campus</option>
+                                        <option value disabled>Please select a Category</option>
                                     </select>
                                 </div>
                             </div>
@@ -63,7 +116,7 @@
                                             <label class="w-100" for="title">Post Details</label>
                                         </div>
                                         <div class="py-3">
-                                            <textarea class="w-100" name="detail" rows="2" required></textarea>
+                                            <textarea class="form-control w-100" name="detail" rows="2" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -73,10 +126,10 @@
                                 <div>
                                     <div class="form-border px-4">
                                         <div class="pt-2">
-                                            <label class="w-100" for="title">Feature Image</label>
+                                            <label class="w-100" for="feature_image">Feature Image</label>
                                         </div>
                                         <div class="py-3">
-                                            <input class="input w-100 p-2" type="file" name="title" placeholder="Enter title">
+                                            <input class="input w-100 p-2" type="file" name="feature_image">
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +137,7 @@
 
                             <div class="row mt-3 mb-5">
                                 <div>
-                                    <button class="btn btn-sm btn-success" type="submit" name="submit" value="submit">Save and Post</button>
+                                    <button class="btn btn-sm btn-success" type="submit" name="submit" value="add">Save and Post</button>
                                     <button class="btn btn-sm btn-danger ms-1" type="reset">Discard</button>
                                 </div>
                             </div>
@@ -96,6 +149,7 @@
     </div>
 
     <?php include_once "../base/dashboard/dashboard_script.php" ?>
+    <script src="../js/dashboard/dashboard_post.js"></script>
 
 </body>
 </html>

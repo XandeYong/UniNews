@@ -97,9 +97,9 @@
         if($status == 0){
             $sql = "SELECT * FROM $table";
         }else if($status == 1){
-            $sql = "SELECT * FROM $table WHERE status = 'true'";
+            $sql = "SELECT * FROM $table WHERE status = 'show'";
         }else if($status == 2){
-            $sql = "SELECT * FROM $table WHERE status = 'false'";
+            $sql = "SELECT * FROM $table WHERE status = 'hide'";
         }
         
 

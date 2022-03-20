@@ -1,34 +1,36 @@
 <?php
 class News {
     //Variables
-    private $news_id;
+    private $newsID;
     private $title;
     private $description;
     private $image;
     private $status;
+    private $datetime;
     private $category;
     private $subCategory;
-    private $comments;
+    private $comments = array();
 
     //Constructors
-    function __construct($news_id, $title, $description, $image, $status, $category, $subCategory, $comments){
-        $this->news_id = $news_id;
+    function __construct($newsID, $title, $description, $image, $status, $datetime, $category, $subCategory, $comments){
+        $this->newsID = $newsID;
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
         $this->status = $status;
+        $this->datetime = $datetime;
         $this->category = $category;
         $this->subCategory = $subCategory;
         $this->comments = $comments;
     }
 
     //Getter & Setter
-    function get_news_id() {
-        return $this->news_id;
+    function get_newsID() {
+        return $this->newsID;
     }
 
-    function set_news_id($news_id){
-        $this->news_id = $news_id;
+    function set_newsID($newsID){
+        $this->newsID = $newsID;
     }
 
     function get_title() {
@@ -61,6 +63,14 @@ class News {
 
     function set_status($status){
         $this->status = $status;
+    }
+    
+    function get_datetime() {
+        return $this->datetime;
+    }
+
+    function set_datetime($datetime){
+        $this->datetime = $datetime;
     }
 
     function get_category() {

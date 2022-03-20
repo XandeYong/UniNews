@@ -5,10 +5,10 @@
     if (isset($_POST["submit"])) {
         $control = $_POST["submit"];
         //Verification Process
-        if(isset($_POST["category"]) && isset($_POST["subcategory"]) && isset($_POST["category-desc"])) {
+        if(isset($_POST["category"]) && isset($_POST["subcategory"]) && isset($_POST["subcategory-desc"])) {
             $category_id = $_POST["category"];
             $subcategory = $_POST["subcategory"];
-            $subcategoryDesc = $_POST["category-desc"];   
+            $subcategoryDesc = $_POST["subcategory-desc"];   
             
             //Processing
             executeQuery(dbConnection(), $control, $category_id, $subcategory, $subcategoryDesc);

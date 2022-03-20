@@ -1,9 +1,43 @@
 <?php require_once "../backend/dashboard/dashboard_initialization.php" ?>
+<?php require_once "../model/Comment.php" ?>
+
+<?php
+//Establishing Connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "unipress";
+
+//Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//Query
+$sql = "SELECT CO.*, N.title FROM comment CO, news N WHERE (status='pending' OR status='unapproved') AND CO.news_id = N.news_id";
+
+//Executing Query
+$result = $conn->query($sql);
+
+//Category Object Array
+$comments = array();
+
+//Fetching Result
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        $comments[] = new Comment($row["comment_id"], $row["name"], $row["email"], $row["content"], $row["status"], $row["datetime"], $row["title"]);
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UniPress | Dashboard</title>
+    <title>UniPress | Comment</title>
     <?php include "../base/dashboard/dashboard_head.php" ?>
     <link rel="stylesheet" href="../css/dashboard/dashboard_manage.css">
 </head>
@@ -32,17 +66,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr id="S1">
-                                    <th scope="row">1</th>
-                                    <td>Adrian Fong</td>
-                                    <td>adrianfong@gmail.com</td>
-                                    <td>Nothing can take me down!</td>
-                                    <td class="text-center">Pending</td>
-                                    <td class="text-center">UCSI SPORT DAY</td>
-                                    <td class="text-center">2021-03-01 12:16:58</td>
+                                <?php if (!empty($comments)) {
+                                    $count = 1;
+                                    foreach ($comments as $comment) {
+                                ?>
+                                <tr id="<?php echo $comment->get_commentID() ?>">
+                                    <th scope="row"><?php echo $count++ ?></th>
+                                    <td><?php echo $comment->get_email() ?></td>
+                                    <td><?php echo $comment->get_content() ?></td>
+                                    <td class="text-center"><?php echo $comment->get_status() ?></td>
+                                    <td class="text-center"><?php echo $comment->get_news() ?></td>
+                                    <td class="text-center"><?php echo $comment->get_datetime() ?></td>
                                     <td class="action">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <a href="#" class="approve borderless backgroundless p-0 me-1" title="approve">
+                                            <a href="../backend/dashboard/updateStatus.php?page=comment&type=approved&id=<?php echo $comment->get_commentID() ?>" class="approve borderless backgroundless p-0 me-1" title="approve">
                                                 <i class="ico ico-sm ico-blue ico-thumbs-up mx-auto"></i>
                                             </a>
                                             <a href="#" class="delete borderless backgroundless p-0" title="delete">
@@ -51,6 +88,18 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <?php
+                                    }
+                                } else {
+                                ?>
+                                    <tr id="">
+                                    <td colspan="8">
+                                        <h5 class="c-red text-center">No record found</h5>
+                                    </td>
+                                </tr>
+                                <?php 
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

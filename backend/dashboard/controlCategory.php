@@ -33,7 +33,7 @@
                 $categoryID = $result->num_rows;
                 $categoryID++;
             }
-            $categoryIDString = "C" . (string)$categoryID;
+            $categoryIDString = "CA" . (string)$categoryID;
 
             //Query Insert Into Category
             $sql = "INSERT INTO category (category_id, category, description, datetime, status) VALUES ('$categoryIDString', '$category', '$categoryDesc', '$dateTime', 'show')";

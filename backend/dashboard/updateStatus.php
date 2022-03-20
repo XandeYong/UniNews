@@ -34,7 +34,7 @@
         } else if ($page == 'comment') {
             $table = "comment";
             $table_id = "comment_id";
-            if ($type == 'show') {
+            if ($type == 'unapproved') {
                 $redirect = "../../dashboard/dashboard_comments_approval.php";
             } else {
                 $redirect = "../../dashboard/dashboard_comments_approved.php";

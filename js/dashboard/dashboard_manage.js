@@ -41,9 +41,9 @@ $(document).ready(function () {
 
     $("#manage_posts .edit, #trash_posts .edit").click(function (e) {
         $id = $(this).parent().parent().parent().attr("id");
-        $title = $(this).parent().parent().siblings()[0].innerHTML;
-        $category = $(this).parent().parent().siblings()[1].innerHTML;
-        $subcategory = $(this).parent().parent().siblings()[2].innerHTML;
+        $title = $(this).parent().parent().siblings()[1].innerHTML;
+        $category = $(this).parent().parent().siblings()[2].innerHTML;
+        $subcategoryInnerHTML = $(this).parent().parent().siblings()[3].innerHTML;
 
         $idInput = $("#update_post_modal").find("input[name=id]");
         $titleInput = $("#update_post_modal").find("input[name=title]");
@@ -59,13 +59,42 @@ $(document).ready(function () {
             }
         });
 
-        $selectionList = $subcategorySelect.children();
+        $category_id = $("select[name=category]").find(":selected").val();
+        $.when(
+            $.ajax({
+                type: "POST",
+                url: "../backend/dashboard/getSubcategory.php",
+                data: {
+                    "category_id": $category_id
+                },
+                success: function (response) {
+                    $subcategory = $("select[name=subcategory]");
+                    $subcategory.children().not("option[hidden]").remove();
+                    $subcategory.children("option").removeAttr("selected");
+                    $subcategory.children("option").attr("selected", "selected");
+        
+                    subcategories = JSON.parse(response);
+                    if (!$.isEmptyObject(subcategories)) {
+                        $.each(subcategories, function (i ,subcategory) { 
+                            elem = '<option value="' + subcategory['subcategory_id'] + '">' + subcategory['subcategory'] + '</option>';
+                            $subcategory.append(elem);
+                        });
+                        
+                    } else {
+                        elem = '<option value disabled>No Subcategory Found</option>';
+                        $subcategory.append(elem);
+                    }
+                }
+            })
+        ).then(function () {
+            $selectionList = $subcategorySelect.children();
 
-        $selectionList.each(i => {
-            if($selectionList[i].innerHTML === $subcategory) {
-                $($selectionList[0]).removeAttr("selected");
-                $($selectionList[i]).attr("selected", "selected");
-            }
+            $selectionList.each(i => {
+                if($selectionList[i].innerHTML === $subcategoryInnerHTML) {
+                    $($selectionList[0]).removeAttr("selected");
+                    $($selectionList[i]).attr("selected", "selected");
+                }
+            });
         });
 
         $idInput.val($id);

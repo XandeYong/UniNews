@@ -14,6 +14,15 @@
         //Setting Into Variables
         $title = $row["title"];
         $desc = $row["description"];
+    } else {
+        $title = "Contact Us";
+        $desc = "UniNews is a online news website based for Universities students. 
+                 So far we only partnered with 3 Universities that is UCSI, KDU and SUNWAY. 
+                 The objective of this news website is that we could bring you daily updated news about your Universities and keep you up to date. 
+                 There will be few categories such as clubs, campus, sports and student councils news that will be published. 
+                 And of course if you guys have some opinion on the news you can comment on it. Moreover, if you have more question you can contact us at UniNews@gmail.com. 
+                 Thank you.";
+        $email = "UniNews@gmail.com";
     }
 
     $conn->close();
@@ -45,18 +54,12 @@
                             <hr/>
                             <div id="contactus_body" class="px-2 py-1">
                                 <p>
-                                    <?php //echo $desc; ?>
-                                    UniNews is a online news website based for Universities students. 
-                                    So far we only partnered with 3 Universities that is UCSI, KDU and SUNWAY. 
-                                    The objective of this news website is that we could bring you daily updated news about your Universities and keep you up to date. 
-                                    There will be few categories such as clubs, campus, sports and student councils news that will be published. 
-                                    And of course if you guys have some opinion on the news you can comment on it. Moreover, if you have more question you can contact us at UniNews@gmail.com. 
-                                    Thank you.
+                                    <?php echo $desc; ?>
                                 </p>
                             </div>
                             <hr/>
                             <div id="contactus_contact">
-                                <p><b>Email:</b> UniNews@gmail.com</p>
+                                <p><b>Email:</b> <?php echo $email; ?></p>
                             </div>
                         </div>
                     </div>

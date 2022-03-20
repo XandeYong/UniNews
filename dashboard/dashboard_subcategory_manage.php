@@ -183,7 +183,7 @@ if ($result3->num_rows > 0) {
                                                     <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
                                                 </button>
                                                 <a href="../backend/dashboard/updateStatus.php?page=subcategory&type=show&id=<?php echo $subcategory->get_subcategoryID() ?>" class="recover borderless backgroundless p-0" title="recover">
-                                                    <i class="ico ico-sm ico-red ico-arrow-clockwise mx-auto"></i>
+                                                    <i class="ico ico-sm ico-green ico-arrow-clockwise mx-auto"></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -229,7 +229,7 @@ if ($result3->num_rows > 0) {
                                     <label for="category">Category</label>
                                 </div>
                                 <div class="category col col-lg-8 mt-2 mt-lg-0">
-                                    <select name="category" class="input w-100" required>
+                                    <select name="category" class="form-control form-control-sm input w-100" required>
                                         <option hidden disabled selected value>Select a category</option>
                                     <?php if (!empty($categoryArray_show)) {
                                         foreach ($categoryArray_show as $category) {
@@ -252,16 +252,16 @@ if ($result3->num_rows > 0) {
                                     <label for="subcategory">Sub Category</label>
                                 </div>
                                 <div class="category col col-lg-8 mt-2 mt-lg-0">
-                                    <input class="input w-100" type="text" name="subcategory" value="" required>
+                                    <input class="form-control form-control-sm input w-100" type="text" name="subcategory" value="" required>
                                 </div>
                             </div>
 
                             <div class="row row-cols-1 row-cols-lg-2 py-2">
                                 <div class="col col-lg-3 text-lg-end">
-                                    <label for="category-desc">Category Description</label>
+                                    <label for="subcategory-desc">Subcategory Description</label>
                                 </div>
                                 <div class="category-desc col col-lg-8 mt-2 mb-3 mt-lg-0">
-                                    <textarea class="input w-100" name="category-desc" value="" rows="4" required></textarea>
+                                    <textarea class="form-control form-control-sm input w-100" name="subcategory-desc" value="" rows="4" required></textarea>
                                 </div>
                             </div>
                         </div>

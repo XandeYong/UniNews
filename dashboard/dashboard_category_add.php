@@ -29,7 +29,7 @@
                                     <label for="category">Category</label>
                                 </div>
                                 <div class="category col col-lg-6 mt-2 mt-lg-0">
-                                    <input class="input w-100" type="text" name="category" value="" required>
+                                    <input class="form-control input w-100" type="text" name="category" value="" required>
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@
                                     <label for="category-desc">Category Description</label>
                                 </div>
                                 <div class="category-desc col col-lg-6 mt-2 mt-lg-0">
-                                    <textarea class="input w-100" name="category-desc" value="" rows="4" required></textarea>
+                                    <textarea class="form-control input w-100" name="category-desc" value="" rows="4" required></textarea>
                                 </div>
                             </div>
 

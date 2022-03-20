@@ -1,3 +1,56 @@
+<?php require_once "./model/News.php" ?>
+<?php require_once "./model/Comment.php" ?>
+
+<?php
+if (isset($_GET['id'])) {
+    $newsID = $_GET['id'];
+} else {
+    header('Location: ./index.php');
+}
+
+//Establishing Connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "unipress";
+
+//Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//Query
+$sql = "SELECT N.*, CA.category, S.subcategory FROM news N, category CA, subcategory S 
+        WHERE N.status='show' 
+        AND N.category_id = CA.category_id 
+        AND N.subcategory_id = S.subcategory_id 
+        AND N.news_id = '$newsID' 
+        ORDER BY N.datetime ASC";
+
+$sql2 = "SELECT * FROM comment WHERE status = 'approved' AND news_id = '$newsID'";
+
+
+//Executing Query
+$result = $conn->query($sql);
+$result2 = $conn->query($sql2);
+
+//Category Object Array
+$post;
+$comments = array();
+
+//Fetching Result
+
+if ($result2->num_rows > 0) {
+
+    while ($row = $result2->fetch_assoc()) {
+        $comments[] = new Comment(null, $row["name"], null, $row["content"], null, $row["datetime"], null);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,35 +69,40 @@
                 <div class="container mt-4">
                     <div class="row justify-content-center">
                         <div id="post-section" class="col-12 col-lg-6">
+                            <?php 
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc()
+                            ?>
                             <div id="post" class="mb-4">
                                 <div id="post-header" class="p-3">
                                     <div class="row">
-                                        <h3>UCSI Club DAY</h3>
+                                        <h3><?php echo $row['title'];  ?></h3>
                                     </div>
                                     <div id="post-reference" class="row">
                                         <div>
                                             <span>
                                                 <b>Category :</b> 
-                                                <a class="text-decoration-none" href="#">UCSI University</a>
+                                                <a class="text-decoration-none" href="./index.php?category=<?php echo $row['category_id'];  ?>"><?php echo $row['category'];  ?></a>
                                             </span>
                                             <span>|</span>
                                             <span>
                                                 <b>Sub Category :</b> 
-                                                <a class="text-decoration-none" href="#">UCSI Club</a>
+                                                <a class="text-decoration-none" href="./index.php?subcategory=<?php echo $row['subcategory_id'];  ?>"><?php echo $row['subcategory'];  ?></a>
                                             </span>
                                             <span>
-                                                <b>Posted on </b> 2021-03-03 14:49:12
+                                                <b>Posted on </b> <?php echo $row['datetime']; ?>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="post-body" class="p-3 pb-1">
                                     <div class="post-image">
-                                        <img src="./image/posts/ucsiopenday.jpg" alt="" />
+                                        <img src="./image/posts/<?php echo $row['image']; ?>" alt="Post Image" />
                                     </div>
                                     <div id="post-content" class="pt-3">
                                         <div id="post-description">
                                             <p>
+                                                <?php echo $row['description'];  ?>
                                                 Welcome back everyone! We are glad to have everyone back. 
                                                 As we all know UCSI has many clubs as for you CCA. 
                                                 Club day will be held on 21st of February with tons of clubs wanting you to join their clubs. 
@@ -53,8 +111,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form action="" method="POST">
-                                    <input type="text" name="id" value="C1" hidden>
+                                <form action="./backend/controlComment.php" method="POST">
+                                    <input type="text" name="newsID" value="<?php echo $newsID ?>" hidden>
                                     <div id="post-comment">
                                         <div id="post-comment-header" class="p-2">
                                             <h5>Leave a Comment</h5>
@@ -77,26 +135,31 @@
                                 </form>
                             </div>
 
+                            <?php } ?>
+
                             <div id="comment-section" class="mb-5">
+                                <?php if (!empty($comments)) {
+                                    foreach ($comments as $comment) {
+                                ?>
                                 <div class="post-user-comment p-3 mb-3">
                                     <div class="p-u-c-header d-flex justify-content-between">
                                         <div class="name">
-                                            <h5>Ahli</h5>
+                                            <h5><?php echo $comment->get_name(); ?></h5>
                                         </div>
                                         <div class="datetime">
-                                            <b>Date:</b> 2022-03-03 10:49:13
+                                            <b>Date:</b> <?php echo $comment->get_datetime(); ?>
                                         </div>
                                     </div>
                                     <hr/>
                                     <div class="p-u-c-body">
                                         <div class="comment">
-                                            <p>Testing a message here</p>
+                                            <p><?php echo $comment->get_content(); ?></p>
                                         </div>
                                     </div>
                                 </div>
 
+                                <?php }} ?>
                             </div>
-                            
                             
                         </div>
                         

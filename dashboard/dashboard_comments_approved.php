@@ -1,4 +1,38 @@
 <?php require_once "../backend/dashboard/dashboard_initialization.php" ?>
+<?php require_once "../model/Comment.php" ?>
+
+<?php
+//Establishing Connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "unipress";
+
+//Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//Query
+$sql = "SELECT CO.*, N.title FROM comment CO, news N WHERE status='approved' AND CO.news_id = N.news_id";
+
+//Executing Query
+$result = $conn->query($sql);
+
+//Category Object Array
+$comments = array();
+
+//Fetching Result
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        $comments[] = new Comment($row["comment_id"], $row["name"], $row["email"], $row["content"], $row["status"], $row["datetime"], $row["title"]);
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

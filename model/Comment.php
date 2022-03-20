@@ -7,15 +7,17 @@ class Comment {
     private $content;
     private $status;
     private $datetime;
+    private $news;
 
     //Parameterized Constructor
-    function __construct($commentID, $name, $email, $content, $status, $datetime){
+    function __construct($commentID, $name, $email, $content, $status, $datetime, $news){
         $this->commentID = $commentID;
         $this->name = $name;
         $this->email = $email;
         $this->content = $content;
         $this->status = $status;
         $this->datetime = $datetime;
+        $this->news = $news;
     }
 
     //Getter Setter
@@ -65,6 +67,14 @@ class Comment {
 
     function set_datetime($datetime) {
         $this->datetime = $datetime;
+    }
+    
+    function get_news() {
+        return $this->news;
+    }
+
+    function set_news($news) {
+        $this->news = $news;
     }
 }
 ?>

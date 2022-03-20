@@ -46,6 +46,10 @@
     filter: invert(80%) sepia(50%) saturate(3330%) hue-rotate(3deg) brightness(110%) contrast(95%);
 }
 
+.ico-green {
+    filter: invert(50%) sepia(57%) saturate(6632%) hue-rotate(70deg) brightness(92%) contrast(96%);
+}
+
 .ico-unipress {
     background-image: url("../image/svg/unipress.svg");
 }

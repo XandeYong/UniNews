@@ -168,7 +168,7 @@ if ($result2->num_rows > 0) {
                                                     <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
                                                 </button>
                                                 <a href="../backend/dashboard/updateStatus.php?page=category&type=show&id=<?php echo $category->get_categoryID() ?>" class="recover borderless backgroundless p-0" title="recover">
-                                                    <i class="ico ico-sm ico-red ico-arrow-clockwise mx-auto"></i>
+                                                    <i class="ico ico-sm ico-green ico-arrow-clockwise mx-auto"></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -216,7 +216,7 @@ if ($result2->num_rows > 0) {
                                     <label for="category">Category</label>
                                 </div>
                                 <div class="category col col-lg-8 mt-2 mt-lg-0">
-                                    <input class="input w-100" type="text" name="category" value="" required>
+                                    <input class="form-control form-control-sm input w-100" type="text" name="category" value="" required>
                                 </div>
                             </div>
 
@@ -225,7 +225,7 @@ if ($result2->num_rows > 0) {
                                     <label for="category-desc">Category Description</label>
                                 </div>
                                 <div class="category-desc col col-lg-8 mt-2 mb-3 mt-lg-0">
-                                    <textarea class="input w-100" name="category-desc" value="" rows="4" required></textarea>
+                                    <textarea class="form-control form-control-sm input w-100" name="category-desc" value="" rows="4" required></textarea>
                                 </div>
                             </div>
                         </div>
