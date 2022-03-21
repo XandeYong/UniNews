@@ -11,7 +11,7 @@
         </div>
         <div class="row text-center">
             <p>
-                &#9400; Designed by Xande & Adrian
+                &#9400; Designed by Alan Ong
             </p>
         </div>
     </div>

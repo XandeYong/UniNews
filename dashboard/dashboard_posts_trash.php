@@ -91,7 +91,7 @@ if ($result2->num_rows > 0) {
                                             <button class="edit borderless backgroundless p-0 me-1" title="edit" data-bs-toggle="modal" data-bs-target="#update_post_modal">
                                                 <i class="ico ico-sm ico-blue ico-edit mx-auto"></i>
                                             </button>
-                                            <a href="../backend/dashboard/updateStatus.php?page=news&type=show&id=<?php echo $post->get_newsID(); ?>" class="recover borderless backgroundless p-0" title="delete">
+                                            <a href="../backend/dashboard/updateStatus.php?page=news&type=show&id=<?php echo $post->get_newsID(); ?>" class="recover borderless backgroundless p-0" title="recover">
                                                 <i class="ico ico-sm ico-green ico-arrow-clockwise mx-auto"></i>
                                             </a>
                                         </div>
