@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UniPress | Dashboard</title>
+    <title>UniPress | Dashboard - About</title>
     <?php include "../base/dashboard/dashboard_head.php" ?>
     <link rel="stylesheet" href="../css/dashboard/dashboard_manage.css">
 </head>

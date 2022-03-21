@@ -36,7 +36,7 @@ $categoryArray = array();
 if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
-        $postArray[] = new News($row["news_id"], $row["title"], null, null, null, $row["category"], $row["subcategory"], null);
+        $postArray[] = new News($row["news_id"], $row["title"], null, null, null, null, $row["category"], $row["subcategory"], null);
     }
 }
 
@@ -102,7 +102,7 @@ if ($result2->num_rows > 0) {
                                 } else {
                                 ?>
                                     <tr id="">
-                                        <td colspan="4">
+                                        <td colspan="5">
                                             <h5 class="c-red text-center">No record found</h5>
                                         </td>
                                     </tr>

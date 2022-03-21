@@ -14,12 +14,14 @@
                 $image = $_FILES["feature_image"];
     
                 $imageResult = verifyImage($_FILES["feature_image"]); 
-                if ($imageResult['status'] !== 1) {
-                    header('Location: ../../dashboard/dashboard_posts_add.php?error=true&img=' . $imageResult['msg']);
+                if ($imageResult['status'] != 0) {
+                    header('Location: ../../dashboard/dashboard_posts_add.php?error=true&img=' . $imageResult['status']);
                 }
                 
                 //Processing
                 executeQuery(dbConnection(), $control, $title, $category_id, $subcategory_id, $description, $image);
+            } else {
+                header('Location: ../../dashboard/dashboard_posts_add.php?error=true');
             }
 
         } else if(($control == "edit" || $control == "edit_trash")) {
@@ -58,8 +60,8 @@
             $newsID = "N" . (string)$id;
 
             $uploadStatus = uploadImage($image, $newsID);
-            if ($uploadStatus['status'] !== 1) {
-                header('Location: ../../dashboard/dashboard_posts_add.php?error=true&img=' + $uploadStatus['msg']);
+            if ($uploadStatus['status'] != 0) {
+                header('Location: ../../dashboard/dashboard_posts_add.php?error=true&img=' . $uploadStatus['status']);
             }
             $imageName = $uploadStatus['filename'];
 
@@ -109,7 +111,7 @@
     function verifyImage($image) {
         $target_dir = "../../image/posts/";
         $target_file = $target_dir . basename($image["name"]);
-        $uploadOk = 1;
+        $uploadOk = 0;
         $message = "Something went wrong.";
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -121,21 +123,21 @@
                     $check = getimagesize($image["tmp_name"]);
                     if ($check !== false) {
                         $message = "File is an image - " . $check["mime"] . ".";
-                        $uploadOk = 1;
+                        $uploadOk = 0;
 
                     } else {
                         $message = "File is not an image.";
-                        $uploadOk = 0;
+                        $uploadOk = 3;
                     }
                 }
             } else {
                 $message = "Sorry, your file is too large. <br/>
                             Maximum file size: 3MB";
-                $uploadOk = 0;
+                $uploadOk = 2;
             }
         } else {
             $message = "Sorry, only WEBP, JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
+            $uploadOk = 1;
         }
         
         $result = array(
@@ -157,11 +159,11 @@
 
         if (move_uploaded_file($image["tmp_name"], $target_file)) {
             $message = "The file ". htmlspecialchars( basename( $image["name"])). " has been uploaded.";
-            $uploadOk = 1;
+            $uploadOk = 0;
             
         } else {
             $message = "Sorry, there was an error uploading your file.";
-            $uploadOk = 0;
+            $uploadOk = 4;
         }
 
         $result = array(

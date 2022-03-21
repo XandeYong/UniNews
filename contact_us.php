@@ -14,6 +14,7 @@
         //Setting Into Variables
         $title = $row["title"];
         $desc = $row["description"];
+        $email = $row["email"];
     } else {
         $title = "Contact Us";
         $desc = "UniNews is a online news website based for Universities students. 

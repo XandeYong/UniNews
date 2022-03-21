@@ -15,9 +15,15 @@
 
     //Query Execution Module
     function executeQuery($conn, $title, $description, $email) {
-
-        //Query Insert Into Category
-        $sql = "INSERT INTO Contact_us (title, description, email) VALUES ('$title', '$description', '$email')";
+        $sql = "SELECT * FROM contact_us";
+        $result = $conn->query($sql);
+        $id = 'CU1';
+        
+        if ($result->num_rows > 0) {
+            $sql = "UPDATE Contact_us SET title = '$title', description = '$description', email = '$email' WHERE contactus_id = '$id'";
+        } else {
+            $sql = "INSERT INTO Contact_us (contactus_id, title, description, email) VALUES ('$id', '$title', '$description', '$email')";
+        }
 
         //Validate Insert Query
         if (mysqli_query($conn, $sql)) {

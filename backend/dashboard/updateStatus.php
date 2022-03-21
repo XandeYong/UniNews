@@ -2,7 +2,7 @@
     require_once './dashboard_initialization.php';
 
     //Verification Process
-    if(isset($_GET["page"]) && (isset($_GET["type"]) && ($_GET["type"] == 'show' || $_GET["type"] == 'hide')) && isset($_GET["id"])) {
+    if(isset($_GET["page"]) && (isset($_GET["type"]) && (($_GET["type"] == 'show' || $_GET["type"] == 'hide') || ($_GET["type"] == 'approved' || $_GET['type'] == 'unapproved'))) && isset($_GET["id"])) {
         $page = $_GET["page"];
         $type = $_GET["type"];
         $id = $_GET["id"];
@@ -35,9 +35,9 @@
             $table = "comment";
             $table_id = "comment_id";
             if ($type == 'unapproved') {
-                $redirect = "../../dashboard/dashboard_comments_approval.php";
-            } else {
                 $redirect = "../../dashboard/dashboard_comments_approved.php";
+            } else {
+                $redirect = "../../dashboard/dashboard_comments_approval.php";
             } 
         }
 
@@ -46,7 +46,7 @@
         //Running Query
         if(mysqli_query($conn, $sql)){
             //If Succesfull
-            header('Location: ' . $redirect);    
+            header('Location: ' . $redirect);  
         } else {
             //Failed / Error
             header('Location: ../../dashboard/dashboard_index.php');

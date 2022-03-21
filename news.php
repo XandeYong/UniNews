@@ -2,8 +2,8 @@
 <?php require_once "./model/Comment.php" ?>
 
 <?php
-if (isset($_GET['id'])) {
-    $newsID = $_GET['id'];
+if (isset($_GET['news'])) {
+    $newsID = $_GET['news'];
 } else {
     header('Location: ./index.php');
 }
@@ -103,10 +103,6 @@ if ($result2->num_rows > 0) {
                                         <div id="post-description">
                                             <p>
                                                 <?php echo $row['description'];  ?>
-                                                Welcome back everyone! We are glad to have everyone back. 
-                                                As we all know UCSI has many clubs as for you CCA. 
-                                                Club day will be held on 21st of February with tons of clubs wanting you to join their clubs. 
-                                                If you are interested you guys could sign up and visit the club day at the UCSI Student Council Facebook page where they will post the links to it.
                                             </p>
                                         </div>
                                     </div>
@@ -135,7 +131,9 @@ if ($result2->num_rows > 0) {
                                 </form>
                             </div>
 
-                            <?php } ?>
+                            <?php } else {
+                                header('Location: ./index.php');
+                            } ?>
 
                             <div id="comment-section" class="mb-5">
                                 <?php if (!empty($comments)) {

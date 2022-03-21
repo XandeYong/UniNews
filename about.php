@@ -12,7 +12,7 @@
         $row = $result -> fetch_assoc();
 
         //Setting Into Variables
-        $desc = $row["description"];
+        $aboutUs = $row["description"];
     }
 
     $conn->close();
@@ -49,13 +49,7 @@
                             </div>
                             <div id="aboutus_content" class="py-4">
                                 <p>
-                                    <?php //echo $aboutUs; ?>
-                                    UniNews is a online news website based for Universities students. 
-                                    So far we only partnered with 3 Universities that is UCSI, KDU and SUNWAY. 
-                                    The objective of this news website is that we could bring you daily updated news about your Universities and keep you up to date. 
-                                    There will be few categories such as clubs, campus, sports and student councils news that will be published. 
-                                    And of course if you guys have some opinion on the news you can comment on it. Moreover, if you have more question you can contact us at UniNews@gmail.com. 
-                                    Thank you.
+                                    <?php echo $aboutUs; ?>
                                 </p>
                             </div>
                         </div>

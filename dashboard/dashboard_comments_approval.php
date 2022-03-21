@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 
 //Query
-$sql = "SELECT CO.*, N.title FROM comment CO, news N WHERE (status='pending' OR status='unapproved') AND CO.news_id = N.news_id";
+$sql = "SELECT CO.*, N.title FROM comment CO, news N WHERE (CO.status='pending' OR CO.status='unapproved') AND CO.news_id = N.news_id";
 
 //Executing Query
 $result = $conn->query($sql);
@@ -72,6 +72,7 @@ if ($result->num_rows > 0) {
                                 ?>
                                 <tr id="<?php echo $comment->get_commentID() ?>">
                                     <th scope="row"><?php echo $count++ ?></th>
+                                    <td><?php echo $comment->get_name() ?></td>
                                     <td><?php echo $comment->get_email() ?></td>
                                     <td><?php echo $comment->get_content() ?></td>
                                     <td class="text-center"><?php echo $comment->get_status() ?></td>
@@ -82,7 +83,7 @@ if ($result->num_rows > 0) {
                                             <a href="../backend/dashboard/updateStatus.php?page=comment&type=approved&id=<?php echo $comment->get_commentID() ?>" class="approve borderless backgroundless p-0 me-1" title="approve">
                                                 <i class="ico ico-sm ico-blue ico-thumbs-up mx-auto"></i>
                                             </a>
-                                            <a href="#" class="delete borderless backgroundless p-0" title="delete">
+                                            <a href="../backend/dashboard/deleteComment.php?page=comment_approval&id=<?php echo $comment->get_commentID() ?>" class="delete borderless backgroundless p-0" title="delete">
                                                 <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
                                             </a>
                                         </div>

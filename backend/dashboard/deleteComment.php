@@ -1,32 +1,32 @@
-<?php
+<?php //haven't do
     require_once './dashboard_initialization.php';
 
     //Verification Process
-    if(isset($_POST["description"])) {
-        $description = $_POST["description"];
+    if(isset($_GET['page']) && isset($_GET["id"])) {
+        $page = $_GET["page"];
+        $id = $_GET["id"];
         
         //Processing
-        executeQuery(dbConnection(), $description);                                    
-    } else {
-        header('Location: ../../dashboard/dashboard_pages_aboutus.php?error=true');
+        executeQuery(dbConnection(), $page, $id);
     }
-
     //Query Execution Module
-    function executeQuery($conn, $description) {
-        $sql = "SELECT * FROM about";
-        $result = $conn->query($sql);
-        $id = 'A1';
-        
-        if ($result->num_rows > 0) {
-            $sql = "UPDATE about SET description = '$description' WHERE about_id = '$id'";
+    function executeQuery($conn, $page, $id){
+        $table = "comment";
+        $table_id = "comment_id";
+
+        if ($page == 'comment_approval') {
+            $redirect = "../../dashboard/dashboard_comments_approval.php";
         } else {
-            $sql = "INSERT INTO about (about_id, description) VALUES ('$id', '$description')";
+            $redirect = "../../dashboard/dashboard_comments_approved.php";
         }
 
-        //Validate Insert Query
-        if (mysqli_query($conn, $sql)) {
+
+        //Query Table Size Check
+        $sql = "DELETE FROM $table WHERE $table_id='$id'";
+        //Running Query
+        if(mysqli_query($conn, $sql)){
             //If Succesfull
-            header('Location: ../../dashboard/dashboard_pages_aboutus.php');
+            header('Location: ' . $redirect);  
         } else {
             //Failed / Error
             header('Location: ../../dashboard/dashboard_index.php');

@@ -23,7 +23,7 @@ $(document).ready(function () {
         $idInput = $("#update_subcategory_modal").find("input[name=id]");
         $categorySelect = $("#update_subcategory_modal").find("select[name=category]");
         $subcategoryInput = $("#update_subcategory_modal").find("input[name=subcategory]");
-        $descInput = $("#update_subcategory_modal").find("textarea[name=category-desc]");
+        $descInput = $("#update_subcategory_modal").find("textarea[name=subcategory-desc]");
 
         $selectionList = $categorySelect.children();
 

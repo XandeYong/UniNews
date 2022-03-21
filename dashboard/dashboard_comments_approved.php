@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 
 //Query
-$sql = "SELECT CO.*, N.title FROM comment CO, news N WHERE status='approved' AND CO.news_id = N.news_id";
+$sql = "SELECT CO.*, N.title FROM comment CO, news N WHERE CO.status='approved' AND CO.news_id = N.news_id";
 
 //Executing Query
 $result = $conn->query($sql);
@@ -66,25 +66,41 @@ if ($result->num_rows > 0) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr id="S1">
-                                    <th scope="row">1</th>
-                                    <td>Adrian Fong</td>
-                                    <td>adrianfong@gmail.com</td>
-                                    <td>Nothing can take me down!</td>
-                                    <td class="text-center">Pending</td>
-                                    <td class="text-center">UCSI SPORT DAY</td>
-                                    <td class="text-center">2021-03-01 12:16:58</td>
+                                <?php if (!empty($comments)) {
+                                    $count = 1;
+                                    foreach ($comments as $comment) {
+                                ?>
+                                <tr id="<?php echo $comment->get_commentID() ?>">
+                                    <th scope="row"><?php echo $count++ ?></th>
+                                    <td><?php echo $comment->get_name() ?></td>
+                                    <td><?php echo $comment->get_email() ?></td>
+                                    <td><?php echo $comment->get_content() ?></td>
+                                    <td class="text-center"><?php echo $comment->get_status() ?></td>
+                                    <td class="text-center"><?php echo $comment->get_news() ?></td>
+                                    <td class="text-center"><?php echo $comment->get_datetime() ?></td>
                                     <td class="action">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <a href="#" class="approve borderless backgroundless p-0 me-1" title="unapprove">
+                                            <a href="../backend/dashboard/updateStatus.php?page=comment&type=unapproved&id=<?php echo $comment->get_commentID() ?>" class="approve borderless backgroundless p-0 me-1" title="unapprove">
                                                 <i class="ico ico-sm ico-orange ico-thumbs-down mx-auto"></i>
                                             </a>
-                                            <a href="#" class="delete borderless backgroundless p-0" title="delete">
+                                            <a href="../backend/dashboard/deleteComment.php?page=comment_approved&id=<?php echo $comment->get_commentID() ?>" class="delete borderless backgroundless p-0" title="delete">
                                                 <i class="ico ico-sm ico-red ico-trash mx-auto"></i>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
+                                <?php
+                                    }
+                                } else {
+                                ?>
+                                    <tr id="">
+                                        <td colspan="8">
+                                            <h5 class="c-red text-center">No record found</h5>
+                                        </td>
+                                    </tr>
+                                <?php 
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

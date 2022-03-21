@@ -44,6 +44,20 @@ if ($result2->num_rows > 0) {
     }
 }
 
+if (isset($_GET['img'])) {
+    $imgError = $_GET['img'];
+    $imgMsg = "";
+    if ($imgError == 1) {
+        $imgMsg = "Sorry, only WEBP, JPG, JPEG, PNG & GIF files are allowed.";
+    } else if ($imgError == 2) {
+        $imgMsg = "Sorry, your file is too large. Maximum file size: 3MB";
+    } else if ($imgError == 3) {
+        $imgMsg = "File is not an image.";
+    } else if ($imgError == 4) {
+        $imgMsg = "Sorry, there was an error uploading your file.";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -130,6 +144,13 @@ if ($result2->num_rows > 0) {
                                         </div>
                                         <div class="py-3">
                                             <input class="input w-100 p-2" type="file" name="feature_image">
+                                            <?php 
+                                                if (isset($_GET['img'])) {
+                                                    ?>
+                                            <div class="error c-red">
+                                                <?php echo $imgMsg; ?>
+                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

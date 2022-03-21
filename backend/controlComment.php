@@ -30,12 +30,12 @@
         $commentID = "CO" . (string)$id;
 
 
-        $sql = "INSERT INTO comment (comment_id, name, email, content, status, datetime, news_id) VALUES ('$commentID', '$name', '$email', '$comment', 'pending', '$dateTime', $newsID)";
+        $sql = "INSERT INTO comment (comment_id, name, email, content, status, datetime, news_id) VALUES ('$commentID', '$name', '$email', '$comment', 'pending', '$dateTime', '$newsID')";
 
         //Validate Insert Query
         if (mysqli_query($conn, $sql)) {
             //If Succesfull
-            header('Location: ../news.php?id=' . $newsID);
+            header('Location: ../news.php?news=' . $newsID);
         } else {
             //Failed / Error
             header('Location: ../index.php');
