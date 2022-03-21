@@ -11,8 +11,7 @@
         if(executeQuery(dbConnection(), $username, $password)){
             header('Location: ../dashboard/dashboard_index.php');
         }else{
-            $_SESSION["login_error"] = "Invalid login credentials!";
-            header('Location: ../admin_login.php');
+            header('Location: ../admin_login.php?error=Invalid login credentials!');
         }
     }
 

@@ -54,7 +54,13 @@
     </div>
 
     <?php include "./base/footer.php" ?>
-    <?php include "./base/script.php" ?>    
+    <?php include "./base/script.php" ?> 
+    <?php if (isset($_GET['error'])) {?>  
+        <script>
+            alert("<?php echo $_GET['error'] ?>");
+            window.location.href = "./admin_login.php";
+        </script>
+    <?php } ?>
 
 </body>
 </html>

@@ -23,7 +23,7 @@
                             <span class="title text-nowrap">CATEGORIES LISTED</span>
                         </div>
                         <div class="d-flex justify-content-between state">
-                            <h4><?php echo executeQuery("category", 0); ?></h4>
+                            <h4><?php echo executeQuery("category", 1); ?></h4>
                             <i class="ico ico-color-dashboard ico-unipress"></i>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <span class="title text-nowrap">SUBCATEGORIES LISTED</span>
                         </div>
                         <div class="d-flex justify-content-between state">
-                            <h4><?php echo executeQuery("subcategory", 0); ?></h4>
+                            <h4><?php echo executeQuery("subcategory", 1); ?></h4>
                             <i class="ico ico-color-dashboard ico-unipress"></i>
                         </div>
                     </div>
@@ -67,6 +67,12 @@
     </div>
 
     <?php include_once "../base/dashboard/dashboard_script.php" ?>
+    <?php if (isset($_GET['chgpass']) && $_GET['chgpass'] == 'true') {?>  
+        <script>
+            alert("Successfully changed password.");
+            window.location.href = "./dashboard_index.php";
+        </script>
+    <?php } ?>
 
 </body>
 </html>

@@ -19,31 +19,43 @@ if ($conn->connect_error) {
 //Query
 if (isset($_GET['category'])) {
     $f_category = $_GET['category'];
-    $sql = "SELECT N.*, CA.category FROM news N, category CA 
+    $sql = "SELECT N.*, CA.category FROM news N, category CA, subcategory S
             WHERE N.status='show'
+            AND CA.status = 'show'
+            AND S.status = 'show'
             AND N.category_id = '$f_category' 
+            AND N.subcategory_id = S.subcategory_id
             AND N.category_id = CA.category_id 
             ORDER BY N.datetime DESC";
 
 } else if (isset($_GET['subcategory'])) {
     $f_subcategory = $_GET['subcategory'];
-    $sql = "SELECT N.*, CA.category FROM news N, category CA 
+    $sql = "SELECT N.*, CA.category FROM news N, category CA, subcategory S
             WHERE N.status='show' 
-            AND N.subcategory_id = '$f_subcategory' 
+            AND CA.status = 'show'
+            AND S.status = 'show'
+            AND S.subcategory_id = '$f_subcategory' 
+            AND N.subcategory_id = S.subcategory_id
             AND N.category_id = CA.category_id 
             ORDER BY N.datetime DESC";
 
 } else if (isset($_GET['search'])) {
     $f_search = $_GET['search'];
-    $sql = "SELECT N.*, CA.category FROM news N, category CA 
+    $sql = "SELECT N.*, CA.category FROM news N, category CA, subcategory S 
             WHERE N.status='show' 
+            AND CA.status = 'show'
+            AND S.status = 'show'
             AND N.title LIKE '%$f_search%'
+            AND N.subcategory_id = S.subcategory_id
             AND N.category_id = CA.category_id 
             ORDER BY N.datetime DESC";
 
 } else {
-    $sql = "SELECT N.*, CA.category FROM news N, category CA 
+    $sql = "SELECT N.*, CA.category FROM news N, category CA, subcategory S
             WHERE N.status='show' 
+            AND CA.status = 'show' 
+            AND S.status = 'show'
+            AND N.subcategory_id = S.subcategory_id
             AND N.category_id = CA.category_id 
             ORDER BY N.datetime DESC";
 }
@@ -158,7 +170,7 @@ $result = $conn->query($sql);
     </div>
 
     <?php include "./base/footer.php" ?>
-    <?php include "./base/script.php" ?>    
+    <?php include "./base/script.php" ?>  
 
 </body>
 </html>

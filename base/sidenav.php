@@ -18,8 +18,17 @@ if ($conn->connect_error) {
 }
 
 //Query
-$sql_category = "SELECT category_id, category FROM category WHERE status='show' ORDER BY datetime ASC";
-$sql_news = "SELECT news_id, title FROM news WHERE status='show' ORDER BY datetime DESC LIMIT 3";
+$sql_category = "SELECT category_id, category FROM category 
+                WHERE status='show' 
+                ORDER BY datetime ASC";
+
+$sql_news = "SELECT N.news_id, N.title FROM news N, category CA, subcategory S
+            WHERE N.status = 'show' 
+            AND CA.status = 'show' 
+            AND S.status = 'show' 
+            AND N.subcategory_id = S.subcategory_id 
+            AND N.category_id = CA.category_id 
+            ORDER BY N.datetime DESC LIMIT 3";
 
 
 

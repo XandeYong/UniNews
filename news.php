@@ -25,6 +25,8 @@ if ($conn->connect_error) {
 //Query
 $sql = "SELECT N.*, CA.category, S.subcategory FROM news N, category CA, subcategory S 
         WHERE N.status='show' 
+        AND CA.status = 'show' 
+        AND S.status = 'show' 
         AND N.category_id = CA.category_id 
         AND N.subcategory_id = S.subcategory_id 
         AND N.news_id = '$newsID' 

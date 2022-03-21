@@ -63,6 +63,11 @@
             array("Comments", "./dashboard_comments_approval.php"), 
             array("Admin", "./dashboard_index.php")
         ),
+
+        array("dashboard_change_password.php", "Change Password", "Change Password", 
+            array("Admin", "./dashboard_index.php"), 
+            array("UniPress", "./dashboard_index.php")
+        ),
     );
 
     $title = array("Dashboard" => "dashboard_index.php", 
@@ -78,12 +83,12 @@
                         "Manage Unapproved Comments" => "dashboard_comments_approval.php",
                         "Manage Approved Comments" => "dashboard_comments_approved.php");
                         
-    $headerTitle;
-    $sitemap_current;
-    $sitemap_parent;
-    $sitemap_parent_link;
-    $sitemap_grandparent;
-    $sitemap_grandparent_link;
+    $headerTitle = "";
+    $sitemap_current = "";
+    $sitemap_parent = "";
+    $sitemap_parent_link = "";
+    $sitemap_grandparent = "";
+    $sitemap_grandparent_link = "";
 
     foreach ($pages as $page) {
         if ($curPath == $page[0]) {
@@ -121,7 +126,7 @@
                                 <h6 id="account-name"><?php echo $loginAccount->get_username(); ?></h6>
                             </div>
                             <div id="account-body" class="account-box">
-                                <a href="#">
+                                <a href="./dashboard_change_password.php">
                                     <div id="account-chgpass" class="account-item">
                                         <h6><i class="ico ico-gear"></i>Change Password</h6>
                                     </div>
